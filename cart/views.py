@@ -135,9 +135,22 @@ from .models import Product
 
 
 def productDetails(request):
+    product_id = request.GET.get("id")
+
+    product = None
+
+    if product_id:
+        product = get_object_or_404(
+            Product,
+            id=product_id
+        )
+
     return render(
         request,
-        "productDetails.html"
+        "productDetails.html",
+        {
+            "product": product
+        }
     )
 
 def cartb(request):
