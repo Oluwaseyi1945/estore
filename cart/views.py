@@ -133,23 +133,9 @@ from .models import Product
 
 
 def productDetails(request):
-
-    product_id = request.GET.get("id")
-
-    product = None
-
-    if product_id:
-        try:
-            product = Product.objects.get(id=product_id)
-        except Product.DoesNotExist:
-            product = None
-
     return render(
         request,
-        "productDetails.html",
-        {
-            "product": product
-        }
+        "productDetails.html"
     )
 
 def cartb(request):
