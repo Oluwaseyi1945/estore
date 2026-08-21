@@ -11,6 +11,8 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import ContactForm, ContactMessage
 from .forms import RegisterForm
+from django.http import JsonResponse
+from django.db import connection
 
 
 
@@ -287,8 +289,17 @@ def contact_view(request):
 
     return render(request, "contact.html")
 
+
+
+
 def db_check(request):
-    return JsonResponse({
-        "database": connection.vendor,
-        "name": connection.settings_dict["NAME"],
-    })
+    try:
+        return JsonResponse({
+            "database": connection.vendor,
+            "name": str(connection.settings_dict["NAME"]),
+        })
+
+    except Exception as e:
+        return JsonResponse({
+            "error": str(e)
+        }, status=500)
