@@ -286,3 +286,9 @@ def contact_view(request):
             )
 
     return render(request, "contact.html")
+
+def db_check(request):
+    return JsonResponse({
+        "database": connection.vendor,
+        "name": connection.settings_dict["NAME"],
+    })

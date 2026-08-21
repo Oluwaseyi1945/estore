@@ -44,6 +44,8 @@ urlpatterns = [
         name="token_refresh"
     ),
 
+    path("db-check/", views.db_check),
+
 ]
 
 
