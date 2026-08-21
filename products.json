@@ -1,0 +1,50 @@
+[
+{
+  "model": "cart.product",
+  "pk": 1,
+  "fields": {
+    "name": "book",
+    "price": "5.00"
+  }
+},
+{
+  "model": "cart.product",
+  "pk": 2,
+  "fields": {
+    "name": "pen",
+    "price": "1.50"
+  }
+},
+{
+  "model": "cart.product",
+  "pk": 3,
+  "fields": {
+    "name": "shirt",
+    "price": "2.00"
+  }
+},
+{
+  "model": "cart.product",
+  "pk": 4,
+  "fields": {
+    "name": "socks",
+    "price": "45.00"
+  }
+},
+{
+  "model": "cart.product",
+  "pk": 5,
+  "fields": {
+    "name": "cup",
+    "price": "5.00"
+  }
+},
+{
+  "model": "cart.product",
+  "pk": 6,
+  "fields": {
+    "name": "laptop",
+    "price": "5.00"
+  }
+}
+]

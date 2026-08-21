@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from .models import Testimonial
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Cart, CartItem, Product
 from .serializers import CartSerializer
 from django.contrib.auth.decorators import login_required
@@ -11,6 +11,7 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import ContactForm, ContactMessage
 from .forms import RegisterForm
+
 
 
 
@@ -127,8 +128,29 @@ def testimonials(request):
 def category(request):
     return render(request, 'category.html')
 
+from django.shortcuts import render
+from .models import Product
+
+
 def productDetails(request):
-    return render(request, 'productDetails.html')
+
+    product_id = request.GET.get("id")
+
+    product = None
+
+    if product_id:
+        try:
+            product = Product.objects.get(id=product_id)
+        except Product.DoesNotExist:
+            product = None
+
+    return render(
+        request,
+        "productDetails.html",
+        {
+            "product": product
+        }
+    )
 
 def cartb(request):
     return render(request, 'cartb.html')
