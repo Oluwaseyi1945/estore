@@ -1,0 +1,504 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}eStore{% endblock %}</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/hero.css' %}">
+    <link rel="stylesheet" href="{% static 'css/features.css' %}">
+    <link rel="stylesheet" href="{% static 'css/product.css' %}">
+    <link rel="stylesheet" href="{% static 'css/best.css' %}">
+    <link rel="stylesheet" href="{% static 'css/shop.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dropdown.css' %}">
+      <link rel="stylesheet" href="{% static 'css/logout.css' %}">
+      <link rel="stylesheet" href="{% static 'css/search.css' %}">
+
+
+    <style>
+        @keyframes appear{
+            from{
+                   transform: translateY(100px);
+            }
+            to{
+
+                transform: translateY(0);
+            }
+        }
+
+        .block{
+            animation: appear  linear;
+            animation-timeline: View();
+            animation-range: entry 0% cover 40%;
+
+            .benefit-item:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.benefit-item:nth-child(1) {
+    animation-delay: 0.10s;
+}
+
+.benefit-item:nth-child(2) {
+    animation-delay: 0.45s;
+}
+
+.benefit-item:nth-child(3) {
+    animation-delay: 0.60s;
+}
+
+.benefit-item:nth-child(4) {
+    animation-delay: 1.60s;
+}
+        }
+    </style>
+
+    {% block extra_css %}{% endblock %}
+
+</head>
+
+<body>
+
+
+<!-- ================= TOP HEADER ================= -->
+
+<div class="top-header">
+
+    <!-- Logo -->
+    <div class="logo">
+        eStore
+    </div>
+
+
+    <!-- Search -->
+   <div class="search-container">
+
+    <input
+        type="text"
+        id="product-search"
+        placeholder="Search for products..."
+        autocomplete="off"
+    >
+
+    <button
+        class="search-btn"
+        id="search-button"
+        type="button"
+    >
+        <svg viewBox="0 0 24 24">
+            <circle
+                cx="11"
+                cy="11"
+                r="7">
+            </circle>
+
+            <line
+                x1="16.5"
+                y1="16.5"
+                x2="22"
+                y2="22">
+            </line>
+        </svg>
+    </button>
+
+    <div id="search-results" class="search-results"></div>
+
+</div>
+
+    <!-- Header Icons -->
+    <div class="header-icons">
+
+
+       <!-- ================= ACCOUNT ================= -->
+
+<div class="account-dropdown">
+
+    <button class="account-btn" type="button">
+
+        <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="7" r="4"></circle>
+
+            <path
+                d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7">
+            </path>
+        </svg>
+
+    </button>
+
+
+    <div class="account-menu">
+
+        {% if user.is_authenticated %}
+
+            <div class="account-user">
+                <strong>Hello, {{ user.username }}</strong>
+            </div>
+
+            <a href="{% url 'logout' %}">
+                Logout
+            </a>
+
+        {% else %}
+
+            <a href="{% url 'login' %}">
+                Login
+            </a>
+
+            <a href="{% url 'register' %}">
+                Create Account
+            </a>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+        <!-- Wishlist -->
+        <a href="#" class="icon-link notification">
+
+            <svg viewBox="0 0 24 24">
+
+                <path
+                    d="M20.8 8.6c0-3-2.4-5.4-5.4-5.4-1.7 0-3.3.8-4.4 2.1C9.9 4 8.3 3.2 6.6 3.2c-3 0-5.4 2.4-5.4 5.4 0 5.3 5.8 8.8 9.8 12.2 4-3.4 9.8-6.9 9.8-12.2z">
+                </path>
+
+            </svg>
+
+            <span class="badge">0</span>
+
+        </a>
+
+
+        <!-- Cart -->
+        <a href="{% url 'cartb' %}" class="icon-link notification">
+
+            <svg viewBox="0 0 24 24">
+
+                <circle
+                    cx="9"
+                    cy="20"
+                    r="1.5">
+                </circle>
+
+                <circle
+                    cx="18"
+                    cy="20"
+                    r="1.5">
+                </circle>
+
+                <path
+                    d="M2 3h3l2.4 11.5a2 2 0 0 0 2 1.5h7.8a2 2 0 0 0 2-1.5L21 7H6">
+                </path>
+
+            </svg>
+
+              <span class="badge" id="cart-count">0</span>
+
+        </a>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================= NAVIGATION ================= -->
+
+<nav class="navbar">
+
+    <div class="nav-container">
+
+
+        <a href="{% url 'home' %}" class="nav-link active">
+            Home
+        </a>
+
+
+        <a  href="{% url 'about' %}" class="nav-link">
+            About
+        </a>
+
+
+        <a href="{% url 'category' %}"  class="nav-link">
+            Category
+        </a>
+
+
+        <a href="{% url 'productDetails' %}" class="nav-link">
+            Product Details
+        </a>
+
+
+        <a href="{% url 'cartb' %}" class="nav-link">
+            Cart
+        </a>
+
+
+        <a href="{% url 'checkout' %}"  class="nav-link">
+            Checkout
+        </a>
+
+        <a href="{% url 'contact' %}" class="nav-link">
+            Contact
+        </a>
+
+
+    </div>
+
+</nav>
+
+
+
+<!-- ================= PAGE CONTENT ================= -->
+
+<main>
+
+    {% block content %}
+    {% endblock %}
+
+</main>
+
+
+
+
+<!-- ================= FOOTER ================= -->
+
+{% block footer %}
+<!-- =====================================================
+     NEWSLETTER
+===================================================== -->
+
+<section class="newsletter-section">
+
+    <div class="newsletter-container">
+
+        <h2>Join Our Newsletter</h2>
+
+        <p>
+            Subscribe to get special offers, free giveaways,
+            and once-in-a-lifetime deals.
+        </p>
+
+        <form class="newsletter-form">
+
+            <input
+                type="email"
+                placeholder="Your email address"
+                required
+            >
+
+            <button type="submit">
+                Subscribe
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+<footer class="site-footer">
+
+    <div class="footer-container">
+
+
+        <!-- COMPANY INFORMATION -->
+        <div class="footer-brand">
+
+            <h2>eStore</h2>
+
+            <p>
+                Lorem ipsum dolor sit amet, consectetur
+                adipiscing elit. Nullam nibh vehicula,
+                facilisis magna ut, consectetur lorem.
+            </p>
+
+
+            <div class="contact-info">
+
+                <div class="contact-item">
+                    <span>⌖</span>
+                    <span>123 Fashion Street, New York, NY 10001</span>
+                </div>
+
+                <div class="contact-item">
+                    <span>♧</span>
+                    <span>+1 (555) 123-4567</span>
+                </div>
+
+                <div class="contact-item">
+                    <span>✉</span>
+                    <span>hello@example.com</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SHOP -->
+        <div class="footer-column">
+
+            <h3>Shop</h3>
+
+            <a href="#">New Arrivals</a>
+            <a href="#">Bestsellers</a>
+            <a href="#">Women's Clothing</a>
+            <a href="#">Men's Clothing</a>
+            <a href="#">Accessories</a>
+            <a href="#">Sale</a>
+
+        </div>
+
+
+        <!-- SUPPORT -->
+        <div class="footer-column">
+
+            <h3>Support</h3>
+
+            <a href="#">Help Center</a>
+            <a href="#">Order Status</a>
+            <a href="#">Shipping Info</a>
+            <a href="#">Returns & Exchanges</a>
+            <a href="#">Size Guide</a>
+            <a href="#">Contact Us</a>
+
+        </div>
+
+
+        <!-- COMPANY -->
+        <div class="footer-column">
+
+            <h3>Company</h3>
+
+            <a href="#">About Us</a>
+            <a href="#">Careers</a>
+            <a href="#">Press</a>
+            <a href="#">Affiliates</a>
+            <a href="#">Responsibility</a>
+            <a href="#">Investors</a>
+
+        </div>
+
+
+        <!-- APP + SOCIAL -->
+        <div class="footer-app">
+
+            <h3>Download Our App</h3>
+
+            <p>
+                Shop on the go with our mobile app
+            </p>
+
+            <div class="app-buttons">
+
+                <a href="#" class="app-button">
+                    <span>●</span>
+                    <small>
+                        <b>App Store</b>
+                    </small>
+                </a>
+
+                <a href="#" class="app-button">
+                    <span>▶</span>
+                    <small>
+                        <b>Google Play</b>
+                    </small>
+                </a>
+
+            </div>
+
+
+            <h3 class="follow-title">
+                Follow Us
+            </h3>
+
+            <div class="social-links">
+
+                <a href="#">f</a>
+                <a href="#">◎</a>
+                <a href="#">𝕏</a>
+                <a href="#">♪</a>
+                <a href="#">p</a>
+                <a href="#">▶</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<div class="footer-bottom">
+
+    <div class="payment-methods">
+
+        <span>We Accept:</span>
+
+        <span>▣</span>
+        <span>▰</span>
+        <span>●</span>
+        <span>G</span>
+        <span>▤</span>
+        <span>▣</span>
+
+    </div>
+
+
+    <div class="footer-links">
+
+        <a href="#">Terms of Service</a>
+
+        <a href="#">Privacy Policy</a>
+
+        <a href="#">Cookies Settings</a>
+
+    </div>
+
+
+    <p class="copyright">
+        © Copyright <strong>eStore</strong>. All Rights Reserved.
+    </p>
+
+    <p class="designed-by">
+        Designed by <span>BootstrapMade</span>
+    </p>
+
+</div>
+
+
+{% endblock %}
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+
+
+<script src="{% static 'js/search.js' %}"></script>
+<script src="{% static 'js/cart.js' %}"></script>
+{% block extra_js %}
+{% endblock %}
+
+
+</body>
+</html>

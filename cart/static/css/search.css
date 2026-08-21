@@ -1,0 +1,225 @@
+/* =========================
+   SEARCH
+========================= */
+
+.search-container {
+    width: 500px;
+    height: 57px;
+
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+
+    border: 1px solid #d9d9d9;
+    border-radius: 35px;
+
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+
+    background: #fff;
+
+    /* IMPORTANT */
+    overflow: visible;
+
+    z-index: 1000;
+}
+
+
+/* =========================
+   SEARCH INPUT
+========================= */
+
+.search-container input {
+    flex: 1;
+
+    height: 100%;
+
+    border: none;
+    outline: none;
+
+    padding: 0 20px;
+
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+
+    color: #333;
+
+    background: transparent;
+}
+
+.search-container input::placeholder {
+    color: #9a9a9a;
+}
+
+
+/* =========================
+   SEARCH BUTTON
+========================= */
+
+.search-btn {
+    width: 84px;
+    height: 49px;
+
+    margin-right: 4px;
+
+    flex-shrink: 0;
+
+    border: none;
+    border-radius: 30px;
+
+    background: #1255b8;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.search-btn:hover {
+    background: #0d4391;
+}
+
+.search-btn svg {
+    width: 25px;
+    height: 25px;
+
+    fill: none;
+    stroke: white;
+    stroke-width: 2;
+    stroke-linecap: round;
+}
+
+
+/* =========================
+   SEARCH RESULTS
+========================= */
+
+.search-results {
+    position: absolute;
+
+    /* Put dropdown BELOW search bar */
+    top: calc(100% + 10px);
+    left: 0;
+
+    width: 100%;
+
+    background: #fff;
+
+    border: 1px solid #e2e2e2;
+    border-radius: 12px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+
+    z-index: 99999;
+
+    display: none;
+
+    max-height: 450px;
+
+    overflow-y: auto;
+}
+
+
+/* =========================
+   PRODUCT RESULT
+========================= */
+
+.search-product {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 12px 15px;
+
+    text-decoration: none;
+
+    color: #222;
+
+    border-bottom: 1px solid #eee;
+
+    transition: background 0.2s ease;
+}
+
+.search-product:last-child {
+    border-bottom: none;
+}
+
+.search-product:hover {
+    background: #f5f7ff;
+}
+
+
+/* =========================
+   PRODUCT IMAGE
+========================= */
+
+.search-product-image {
+    width: 60px;
+    height: 60px;
+
+    flex-shrink: 0;
+
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    background: #f5f5f5;
+}
+
+.search-product-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* =========================
+   PRODUCT INFO
+========================= */
+
+.search-product-info {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+.search-product-info strong {
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: #222;
+}
+
+.search-product-info span {
+    font-size: 13px;
+
+    font-weight: 600;
+
+    color: #e63946;
+}
+
+
+/* =========================
+   NO RESULTS
+========================= */
+
+.no-results {
+    padding: 20px;
+
+    text-align: center;
+
+    font-size: 14px;
+
+    color: #777;
+}

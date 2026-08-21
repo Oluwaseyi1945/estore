@@ -1,0 +1,97 @@
+/* =========================
+   ACCOUNT DROPDOWN
+========================= */
+
+.account-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.account-btn {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+    border: none;
+
+    cursor: pointer;
+}
+
+.account-btn svg {
+    width: 25px;
+    height: 25px;
+
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+}
+
+/* Dropdown */
+
+.account-menu {
+    position: absolute;
+
+    top: 50px;
+    right: 0;
+
+    width: 190px;
+
+    background: white;
+
+    border-radius: 10px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+
+    padding: 8px;
+
+    display: none;
+
+    z-index: 1000;
+}
+
+/* Show dropdown when hovering */
+
+.account-dropdown:hover .account-menu {
+    display: block;
+}
+
+/* Dropdown links */
+
+.account-menu a {
+    display: block;
+
+    padding: 12px 15px;
+
+    color: #333;
+
+    text-decoration: none;
+
+    border-radius: 7px;
+
+    font-size: 14px;
+
+    transition: 0.3s ease;
+}
+
+.account-menu a:hover {
+    background: #0d6efd;
+    color: white;
+}
+
+/* User information */
+
+.account-user {
+    padding: 12px 15px;
+
+    border-bottom: 1px solid #eee;
+
+    margin-bottom: 5px;
+
+    color: #333;
+
+    font-size: 14px;
+}

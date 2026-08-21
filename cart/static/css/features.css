@@ -1,0 +1,163 @@
+/* =====================================================
+   BENEFITS SECTION
+===================================================== */
+
+.benefits-section {
+    width: 100%;
+
+    background: #f4f8fc;
+
+    padding: 52px 0;
+}
+
+.benefits-container {
+    width: 82%;
+    max-width: 1600px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    position: relative;
+}
+
+
+/* =====================================================
+   BENEFIT ITEM
+===================================================== */
+
+.benefit-item {
+    text-align: center;
+
+    padding: 0 35px;
+
+    position: relative;
+}
+
+
+/* Vertical divider */
+
+.benefit-item:not(:last-child)::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    width: 1px;
+    height: 20px;
+
+    background: #243f5c;
+}
+
+
+/* =====================================================
+   ICON
+===================================================== */
+
+.benefit-icon {
+    width: 42px;
+    height: 42px;
+
+    margin: 0 auto 13px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.benefit-icon svg {
+    width: 32px;
+    height: 32px;
+
+    fill: none;
+
+    stroke: #21496f;
+
+    stroke-width: 1.6;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+/* =====================================================
+   TITLE
+===================================================== */
+
+.benefit-item h3 {
+    margin: 0 0 8px;
+
+    color: #21496f;
+
+    font-size: 16px;
+
+    font-weight: 500;
+}
+
+
+/* =====================================================
+   DESCRIPTION
+===================================================== */
+
+.benefit-item p {
+    max-width: 280px;
+
+    margin: 0 auto;
+
+    color: #334c65;
+
+    font-size: 13px;
+
+    line-height: 1.55;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1000px) {
+
+    .benefits-container {
+        width: 90%;
+
+        grid-template-columns: repeat(2, 1fr);
+
+        row-gap: 45px;
+    }
+
+    .benefit-item:nth-child(2)::after {
+        display: none;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .benefits-section {
+        padding: 45px 0;
+    }
+
+    .benefits-container {
+        width: 90%;
+
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+    }
+
+    .benefit-item {
+        padding: 0 15px;
+    }
+
+    .benefit-item::after {
+        display: none !important;
+    }
+
+}
+

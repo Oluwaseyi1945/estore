@@ -1,0 +1,378 @@
+/* =====================================================
+   BEST SELLERS SECTION
+===================================================== */
+
+.best-sellers-section {
+    width: 100%;
+
+    background: #ffffff;
+
+    padding: 65px 0 75px;
+}
+
+
+.best-sellers-container {
+    width: 82%;
+    max-width: 1600px;
+
+    margin: 0 auto;
+}
+
+
+/* =====================================================
+   SECTION HEADING
+===================================================== */
+
+.section-heading {
+    text-align: center;
+
+    margin-bottom: 55px;
+}
+
+.section-heading h2 {
+    margin: 0 0 12px;
+
+    color: #294b69;
+
+    font-size: 30px;
+
+    font-weight: 500;
+}
+
+.section-heading p {
+    margin: 0;
+
+    color: #111111;
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   PRODUCTS GRID
+===================================================== */
+
+.products-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 22px;
+}
+
+
+/* =====================================================
+   PRODUCT CARD
+===================================================== */
+
+.product-card {
+    background: #ffffff;
+
+    border-radius: 7px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.06);
+
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.10);
+}
+
+
+/* =====================================================
+   PRODUCT IMAGE
+===================================================== */
+
+.product-image-box {
+    height: 287px;
+
+    position: relative;
+
+    background: #f6f7f8;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+.product-image-box img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+
+    transition: transform 0.4s ease;
+}
+
+.product-card:hover .product-image-box img {
+    transform: scale(1.04);
+}
+
+
+/* =====================================================
+   PRODUCT BADGES
+===================================================== */
+
+.product-badge {
+    position: absolute;
+
+    top: 13px;
+    left: 10px;
+
+    z-index: 2;
+
+    padding: 3px 8px;
+
+    border-radius: 3px;
+
+    color: #ffffff;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+
+/* NEW */
+
+.product-badge.new {
+    background: #0754b8;
+}
+
+
+/* SALE */
+
+.product-badge.sale {
+    background: #ff626a;
+}
+
+
+/* SOLD OUT */
+
+.product-badge.sold-out {
+    background: #747c83;
+}
+
+
+/* =====================================================
+   PRODUCT DETAILS
+===================================================== */
+
+.product-details {
+    padding: 17px 19px 20px;
+}
+
+
+.product-details h3 {
+    min-height: 24px;
+
+    margin: 0 0 20px;
+
+    color: #123e67;
+
+    font-size: 14px;
+
+    font-weight: 400;
+
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   PRICE
+===================================================== */
+
+.product-price {
+    margin-bottom: 12px;
+
+    color: #123e67;
+
+    font-size: 17px;
+
+    font-weight: 600;
+}
+
+
+.sale-price {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+}
+
+
+.old-price {
+    color: #777777;
+
+    font-size: 11px;
+
+    font-weight: 400;
+
+    text-decoration: line-through;
+}
+
+
+/* =====================================================
+   RATING
+===================================================== */
+
+.product-rating {
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    margin-bottom: 17px;
+}
+
+
+.stars {
+    color: #ffb400;
+
+    font-size: 16px;
+
+    letter-spacing: -2px;
+}
+
+
+.review-count {
+    color: #66829b;
+
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   ADD TO CART BUTTON
+===================================================== */
+
+.add-cart-btn {
+    width: 100%;
+
+    height: 40px;
+
+    border: none;
+
+    border-radius: 4px;
+
+    background: #0d54b8;
+
+    color: #ffffff;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    transition: background 0.25s ease;
+}
+
+.add-cart-btn:hover {
+    background: #083f8c;
+}
+
+
+.cart-icon {
+    font-size: 18px;
+
+    line-height: 1;
+}
+
+
+/* =====================================================
+   DISABLED / SOLD OUT
+===================================================== */
+
+.add-cart-btn.disabled {
+    background: #eef0f2;
+
+    color: #a3a8ad;
+
+    cursor: not-allowed;
+}
+
+.add-cart-btn.disabled:hover {
+    background: #eef0f2;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1100px) {
+
+    .best-sellers-container {
+        width: 90%;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 20px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .best-sellers-section {
+        padding: 50px 0;
+    }
+
+    .best-sellers-container {
+        width: 90%;
+    }
+
+    .section-heading {
+        margin-bottom: 35px;
+    }
+
+    .section-heading h2 {
+        font-size: 26px;
+    }
+
+    .section-heading p {
+        font-size: 13px;
+
+        line-height: 1.6;
+    }
+
+    .products-grid {
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+    .product-image-box {
+        height: 300px;
+    }
+
+}

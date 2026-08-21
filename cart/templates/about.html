@@ -1,0 +1,438 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}
+eStore - Home
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+<link rel="stylesheet" href="{% static 'css/stats.css' %}">
+<link rel="stylesheet" href="{% static 'css/test.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="page-header">
+
+    <div class="page-header-container">
+
+        <!-- Page Title -->
+        <h1>About</h1>
+
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+
+            <a href="{% url 'home' %}">Home</a>
+
+            <span>/</span>
+
+            <span class="current-page">About</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="about-section">
+
+    <div class="about-container">
+
+        <!-- TOP CONTENT -->
+
+        <div class="about-intro">
+
+            <!-- LEFT -->
+
+            <div class="about-intro-left">
+
+                <div class="about-label">
+                    <span class="about-label-icon">ⓘ</span>
+                    About Us
+                </div>
+
+                <h2>
+                    Making Online Shopping Simple, Convenient and Reliable
+                </h2>
+
+                <p>
+                    Welcome to eStore, your trusted destination for quality products at affordable prices. We created eStore to make online shopping easier, faster, and more convenient by bringing a wide range of products together in one simple and user-friendly platform.
+                </p>
+
+            </div>
+
+
+            <!-- RIGHT -->
+
+            <div class="about-intro-right">
+
+                <p>
+                    Whether you're shopping for electronics, fashion, home essentials, accessories, or everyday products, our goal is to help you find what you need without the stress of visiting multiple stores.
+                </p>
+
+                <p>
+                    We believe that great online shopping should be more than just buying a product. It should be a smooth experience from the moment you discover an item to the moment it arrives at your doorstep.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- BENEFITS -->
+
+        <div class="benefits-grid">
+
+
+            <!-- BENEFIT 1 -->
+
+            <div class="benefit-item block">
+
+                <div class="benefit-icon">
+
+                    <svg viewBox="0 0 24 24">
+
+                        <circle
+                            cx="12"
+                            cy="12"
+                            r="8">
+                        </circle>
+
+                        <circle
+                            cx="12"
+                            cy="12"
+                            r="5">
+                        </circle>
+
+                        <circle
+                            cx="12"
+                            cy="12"
+                            r="2">
+                        </circle>
+
+                    </svg>
+
+                </div>
+
+                <h3>
+                    Quality Products
+                </h3>
+
+                <p>
+                 We carefully select the products available on our platform to give our customers access to useful, reliable, and quality items. We are committed to continuously expanding our collection to meet the changing needs of our customers.
+                </p>
+
+            </div>
+
+
+            <!-- BENEFIT 2 -->
+
+            <div class="benefit-item block">
+
+                <div class="benefit-icon">
+
+                    <svg viewBox="0 0 24 24">
+
+                        <circle
+                            cx="9"
+                            cy="7"
+                            r="3">
+                        </circle>
+
+                        <path
+                            d="M3 20c0-3.5 2.5-6 6-6">
+                        </path>
+
+                        <path
+                            d="M15 14l2 2 4-4">
+                        </path>
+
+                        <circle
+                            cx="18"
+                            cy="17"
+                            r="3">
+                        </circle>
+
+                    </svg>
+
+                </div>
+
+                <h3>
+                   Easy & Convenient Shopping
+                </h3>
+
+                <p>
+                  Our platform is designed with simplicity in mind. Browse products, search for what you need, add items to your cart, and proceed to checkout with ease. We want you to spend less time searching and more time enjoying your purchases.
+                </p>
+
+            </div>
+
+
+            <!-- BENEFIT 3 -->
+
+            <div class="benefit-item block">
+
+                <div class="benefit-icon">
+
+                    <svg viewBox="0 0 24 24">
+
+                        <rect
+                            x="5"
+                            y="4"
+                            width="14"
+                            height="17"
+                            rx="2">
+                        </rect>
+
+                        <path
+                            d="M9 4V2h6v2">
+                        </path>
+
+                        <path
+                            d="M9 16v-4">
+                        </path>
+
+                        <path
+                            d="M12 16v-7">
+                        </path>
+
+                        <path
+                            d="M15 16v-2">
+                        </path>
+
+                    </svg>
+
+                </div>
+
+                <h3>
+                   Customer Satisfaction
+                </h3>
+
+                <p>
+            Our customers are at the heart of everything we do. We are committed to providing a reliable shopping experience, clear product information, and helpful customer support whenever you need assistance.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+    <div class="video-wrapper">
+
+    <iframe
+        src="https://www.youtube.com/embed/hvn1g85iIIQ"
+        title="About Us Video"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+    </iframe>
+
+</div>
+
+
+
+<!-- =========================
+     STATS SECTION
+========================= -->
+
+<section class="stats-section">
+
+    <!-- PEOPLE -->
+    <div class="people-container">
+
+        <div class="person">
+            <img src="{% static 'images/s1.png' %}" alt="Person">
+        </div>
+
+        <div class="person">
+            <img src="{% static 'images/b.png' %}" alt="Person">
+        </div>
+
+        <div class="person">
+            <img src="{% static 'images/d.png' %}" alt="Person">
+        </div>
+
+        <div class="person">
+            <img src="{% static 'images/s1.png' %}" alt="Person">
+        </div>
+
+    </div>
+
+
+    <!-- STAT 1 -->
+    <div class="stat-item">
+
+        <div class="stat-number">
+            <span class="counter" data-target="185">0</span>+
+        </div>
+
+        <div class="stat-text">
+            Nemo enim ipsam
+        </div>
+
+    </div>
+
+
+    <!-- STAT 2 -->
+    <div class="stat-item">
+
+        <div class="stat-number">
+            <span class="counter" data-target="32">0</span>K
+        </div>
+
+        <div class="stat-text">
+            Voluptatem sequi
+        </div>
+
+    </div>
+
+
+    <!-- STAT 3 -->
+    <div class="stat-item">
+
+        <div class="stat-number">
+            <span class="counter" data-target="128">0</span>+
+        </div>
+
+        <div class="stat-text">
+            Dolor sit consectetur
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     TESTIMONIALS SECTION
+========================= -->
+
+<section class="testimonials-section">
+
+    <div class="testimonials-container">
+
+        <div class="testimonials-header">
+
+            <span class="testimonials-label">
+                Testimonials
+            </span>
+
+            <h2>
+                What our clients say
+            </h2>
+
+            <p>
+                Discover what our clients have to say about
+                their experience working with us.
+            </p>
+
+        </div>
+
+
+        <div class="testimonials-grid">
+
+            {% for testimonial in testimonials %}
+
+                <div class="testimonial-card
+                    {% if testimonial.is_highlighted %}
+                        highlight
+                    {% endif %}
+                ">
+
+                    <!-- Quote -->
+                    <div class="quote-icon">
+                        “
+                    </div>
+
+
+                    <!-- Message -->
+                    <div class="testimonial-content">
+
+                        <p>
+                            {{ testimonial.message }}
+                        </p>
+
+                    </div>
+
+
+                    <!-- Divider -->
+                    <div class="testimonial-divider"></div>
+
+
+                    <!-- Person -->
+                    <div class="testimonial-person">
+
+                        {% if testimonial.image %}
+
+                            <img
+                                src="{{ testimonial.image.url }}"
+                                alt="{{ testimonial.name }}"
+                            >
+
+                        {% else %}
+
+                            <div class="testimonial-placeholder">
+                                {{ testimonial.name|first }}
+                            </div>
+
+                        {% endif %}
+
+
+                        <div class="testimonial-person-info">
+
+                            <h4>
+                                {{ testimonial.name }}
+                            </h4>
+
+                            <span>
+                                {{ testimonial.role }}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            {% empty %}
+
+                <p class="no-testimonials">
+                    No testimonials available.
+                </p>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+
+
+</section>
+
+
+<script src="{% static 'js/stats.js' %}"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

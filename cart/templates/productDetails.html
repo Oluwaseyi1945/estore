@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+eStore - Product Details
+{% endblock %}
+
+{% block extra_css %}
+
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+<link rel="stylesheet" href="{% static 'css/productdetails.css' %}">
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="page-header">
+
+    <div class="page-header-container">
+
+        <!-- Page Title -->
+        <h1>Product-Details</h1>
+
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+
+            <a href="{% url 'home' %}">Home</a>
+
+            <span>/</span>
+
+            <span class="current-page">Product-Details</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section class="product-details-section">
+
+    <div
+        class="product-details"
+        id="productDetails"
+    >
+
+        <!-- Product will be loaded here -->
+
+        <div class="product-loading">
+            Loading product...
+        </div>
+
+    </div>
+
+</section>
+
+<section class="product-tabs-section">
+
+    <div class="product-tabs">
+
+        <button
+            class="product-tab active"
+            data-tab="description"
+        >
+            Description
+        </button>
+
+        <button
+            class="product-tab"
+            data-tab="specifications"
+        >
+            Specifications
+        </button>
+
+        <button
+            class="product-tab"
+            data-tab="reviews"
+        >
+            Reviews (<span id="reviewCount">0</span>)
+        </button>
+
+    </div>
+
+
+    <!-- DESCRIPTION -->
+
+    <div
+        class="tab-content active"
+        id="descriptionTab"
+    >
+
+        <h2>Product Overview</h2>
+
+        <p id="productDescription">
+            Loading...
+        </p>
+
+
+        <h2>Key Features</h2>
+
+        <ul id="keyFeatures">
+            <li>Loading...</li>
+        </ul>
+
+
+        <h2>What's in the Box</h2>
+
+        <ul id="boxContents">
+            <li>Loading...</li>
+        </ul>
+
+    </div>
+
+
+    <!-- SPECIFICATIONS -->
+
+    <div
+        class="tab-content"
+        id="specificationsTab"
+    >
+
+        <h2>Specifications</h2>
+
+        <div
+            class="specifications-list"
+            id="specificationsList"
+        >
+        </div>
+
+    </div>
+
+
+    <!-- REVIEWS -->
+
+    <div
+        class="tab-content"
+        id="reviewsTab"
+    >
+
+        <h2>Customer Reviews</h2>
+
+        <div id="reviewsList">
+            Loading reviews...
+        </div>
+
+    </div>
+
+</section>
+
+
+<script src="{% static 'js/productdetails.js' %}"></script>
+
+{% endblock %}

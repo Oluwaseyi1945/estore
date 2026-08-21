@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+eStore - Category
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+<link rel="stylesheet" href="{% static 'css/productlisitng.css' %}">
+<link rel="stylesheet" href="{% static 'css/AddTo.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+
+<section class="page-header">
+    <div class="page-header-container">
+        <h1>Category</h1>
+
+        <div class="breadcrumb">
+            <a href="{% url 'home' %}">Home</a>
+            <span>/</span>
+            <span class="current-page">Category</span>
+        </div>
+    </div>
+</section>
+
+<div class="product-page">
+
+    <!-- SIDEBAR -->
+    <aside class="product-sidebar">
+
+        <h3>Categories</h3>
+
+        <div class="category-list" id="categoryList">
+            <button class="active" data-category="">
+                All Products
+            </button>
+        </div>
+
+        <!-- PRICE -->
+        <div class="filter-section">
+            <h3>Price Range</h3>
+
+            <input
+                type="range"
+                id="priceRange"
+                min="0"
+                max="1000000"
+                value="1000000"
+            >
+
+            <div class="price-inputs">
+                <input type="number" id="minPrice" placeholder="₦0">
+                <span>—</span>
+                <input type="number" id="maxPrice" placeholder="₦500,000">
+            </div>
+
+            <button class="apply-btn" id="applyFilter">
+                Apply Filter
+            </button>
+        </div>
+
+        <!-- BRAND -->
+        <div class="filter-section">
+            <h3>Filter by Brand</h3>
+
+            <input
+                class="filter-search"
+                id="brandSearch"
+                type="text"
+                placeholder="Search brand..."
+            >
+
+            <label>
+                <input type="checkbox" value="Nike" class="brand-filter">
+                Nike
+            </label>
+
+            <label>
+                <input type="checkbox" value="Adidas" class="brand-filter">
+                Adidas
+            </label>
+
+            <label>
+                <input type="checkbox" value="Puma" class="brand-filter">
+                Puma
+            </label>
+        </div>
+
+        <!-- COLOR -->
+        <div class="filter-section">
+            <h3>Filter by Color</h3>
+
+            <div class="colors">
+                <span class="color black"></span>
+                <span class="color white"></span>
+                <span class="color red"></span>
+                <span class="color orange"></span>
+                <span class="color green"></span>
+                <span class="color yellow"></span>
+                <span class="color purple"></span>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- PRODUCTS -->
+    <main class="products-area">
+
+        <div class="product-toolbar">
+
+            <div class="search-box">
+                <input
+                    type="text"
+                    id="productSearch"
+                    placeholder="Search for products..."
+                >
+
+                <button id="searchButton">⌕</button>
+            </div>
+
+            <select id="priceFilter">
+                <option value="">All Price</option>
+                <option value="0-50000">₦0 - ₦50,000</option>
+                <option value="50000-100000">₦50,000 - ₦100,000</option>
+                <option value="100000+">₦100,000+</option>
+            </select>
+
+            <select id="sortProducts">
+                <option value="featured">Featured</option>
+                <option value="newest">Newest</option>
+                <option value="low">Price: Low to High</option>
+                <option value="high">Price: High to Low</option>
+            </select>
+
+        </div>
+
+
+        <div class="active-filters">
+
+            <span>Active Filters:</span>
+
+            <span id="selectedCategory"></span>
+
+            <span id="productCount">0 Products</span>
+
+        </div>
+
+
+        <div class="products-grid" id="productsGrid">
+            <!-- Products will be inserted by JavaScript -->
+        </div>
+
+
+        <div class="no-products" id="noProducts" style="display: none;">
+            No products found.
+        </div>
+
+        <div class="pagination" id="pagination">
+    <!-- Pagination buttons will be created by JavaScript -->
+</div>
+
+    </main>
+
+</div>
+
+<script src="{% static 'js/productlisting.js' %}"></script>
+
+{% endblock %}

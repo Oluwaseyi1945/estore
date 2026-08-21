@@ -1,0 +1,341 @@
+/* =========================================
+   REMOVE ITEM BUTTON
+========================================= */
+
+.remove-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 12px;
+    padding: 8px 16px;
+
+    background: #fff;
+
+    color: #ef4444;
+
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.remove-item:hover {
+    background: #ef4444;
+    color: #fff;
+
+    border-color: #ef4444;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 6px 15px rgba(239, 68, 68, 0.20);
+}
+
+.remove-item:active {
+    transform: scale(0.95);
+}
+
+.remove-item:focus {
+    outline: none;
+}
+
+.remove-item:focus-visible {
+    outline: 3px solid rgba(239, 68, 68, 0.20);
+    outline-offset: 3px;
+}
+
+/* =========================================
+   CLEAR CART MODAL
+========================================= */
+
+.clear-cart-modal {
+    position: fixed;
+    inset: 0;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(15, 23, 42, 0.60);
+
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    z-index: 9999;
+}
+
+
+/* SHOW MODAL */
+
+.clear-cart-modal.show {
+    display: flex;
+}
+
+
+/* =========================================
+   MODAL CONTENT
+========================================= */
+
+.clear-cart-content {
+    width: 100%;
+    max-width: 420px;
+
+    padding: 35px 32px 30px;
+
+    background: #ffffff;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow:
+        0 25px 70px rgba(15, 23, 42, 0.25);
+
+    animation: clearCartPopup 0.3s ease;
+}
+
+
+/* =========================================
+   CART ICON
+========================================= */
+
+.clear-cart-icon {
+    width: 65px;
+    height: 65px;
+
+    margin: 0 auto 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #eff6ff;
+
+    border: 8px solid #dbeafe;
+
+    border-radius: 50%;
+
+    font-size: 27px;
+
+    line-height: 1;
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.clear-cart-content h3 {
+    margin: 0 0 10px;
+
+    color: #0f172a;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 24px;
+    font-weight: 700;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.clear-cart-content p {
+    max-width: 340px;
+
+    margin: 0 auto 28px;
+
+    color: #64748b;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 13px;
+    font-weight: 400;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   ACTION BUTTONS
+========================================= */
+
+.clear-cart-actions {
+    display: flex;
+
+    gap: 12px;
+
+    width: 100%;
+}
+
+
+/* BOTH BUTTONS */
+
+.clear-cart-actions button {
+    flex: 1;
+
+    height: 46px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+
+/* =========================================
+   CANCEL
+========================================= */
+
+.cancel-clear {
+    background: #f1f5f9;
+
+    color: #334155;
+
+    border: 1px solid #e2e8f0 !important;
+}
+
+.cancel-clear:hover {
+    background: #e2e8f0;
+
+    color: #0f172a;
+
+    transform: translateY(-1px);
+}
+
+.cancel-clear:active {
+    transform: scale(0.97);
+}
+
+
+/* =========================================
+   CONFIRM
+========================================= */
+
+.confirm-clear {
+    background: #ef4444;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 5px 15px rgba(239, 68, 68, 0.20);
+}
+
+.confirm-clear:hover {
+    background: #dc2626;
+
+    box-shadow:
+        0 8px 20px rgba(239, 68, 68, 0.28);
+
+    transform: translateY(-1px);
+}
+
+.confirm-clear:active {
+    transform: scale(0.97);
+}
+
+
+/* =========================================
+   FOCUS
+========================================= */
+
+.clear-cart-actions button:focus {
+    outline: none;
+}
+
+.clear-cart-actions button:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.20);
+
+    outline-offset: 3px;
+}
+
+
+/* =========================================
+   POPUP ANIMATION
+========================================= */
+
+@keyframes clearCartPopup {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(20px)
+            scale(0.94);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+    .clear-cart-modal {
+        padding: 15px;
+    }
+
+    .clear-cart-content {
+        padding: 30px 22px 25px;
+
+        border-radius: 18px;
+    }
+
+    .clear-cart-icon {
+        width: 58px;
+        height: 58px;
+
+        font-size: 24px;
+    }
+
+    .clear-cart-content h3 {
+        font-size: 21px;
+    }
+
+    .clear-cart-content p {
+        font-size: 12px;
+
+        margin-bottom: 23px;
+    }
+
+    .clear-cart-actions {
+        flex-direction: column;
+    }
+
+    .clear-cart-actions button {
+        width: 100%;
+    }
+}

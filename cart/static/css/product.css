@@ -1,0 +1,271 @@
+/* =========================
+   CATEGORY SECTION
+========================= */
+
+.categories-container {
+    position: relative;
+
+    width: 100%;
+    max-width: 1250px;
+
+    margin: 35px auto 45px;
+
+    padding: 0 45px;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   CATEGORY LIST
+========================= */
+
+.categories-list {
+    display: flex;
+    flex-wrap: nowrap;
+
+    gap: 12px;
+
+    width: 100%;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-behavior: smooth;
+
+    scrollbar-width: none;
+}
+
+
+.categories-list::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* =========================
+   CATEGORY CARD
+========================= */
+
+.category-card {
+    flex: 0 0 185px;
+
+    width: 185px;
+    min-width: 185px;
+
+    height: 205px;
+
+    background: #f5f5f5;
+
+    border-radius: 6px;
+
+    overflow: hidden;
+
+    text-decoration: none;
+}
+
+
+/* =========================
+   CATEGORY IMAGE
+========================= */
+
+.category-image {
+    width: 100%;
+    height: 130px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+
+.category-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+}
+
+
+/* =========================
+   CATEGORY NAME
+========================= */
+
+.category-card h3 {
+    margin: 8px 5px 4px;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* =========================
+   PRODUCT COUNT
+========================= */
+
+.category-card p {
+    margin: 0;
+
+    text-align: center;
+
+    font-size: 11px;
+
+    color: #777;
+}
+
+
+/* =========================
+   CATEGORY ARROWS
+========================= */
+
+.category-arrow {
+    position: absolute;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.12);
+
+    cursor: pointer;
+
+    z-index: 20;
+
+    font-size: 18px;
+
+    color: #31506f;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.category-prev {
+    left: 5px;
+}
+
+
+.category-next {
+    right: 5px;
+}
+
+
+/* =========================
+   ARROW HOVER
+========================= */
+
+.category-arrow:hover {
+    background: #0d55c9;
+
+    color: white;
+
+    transform:
+        translateY(-50%)
+        scale(1.05);
+}
+
+
+/* =========================
+   PRODUCT GRID
+========================= */
+
+.shop-products-grid {
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   PRODUCT CATEGORY TRANSITION
+========================= */
+
+/*
+   When changing category,
+   old products slide to the left.
+*/
+
+.shop-products-grid.slide-out {
+    animation:
+        productsSlideOut
+        0.35s
+        ease-in-out
+        forwards;
+}
+
+
+/*
+   New products slide in
+   from the right.
+*/
+
+.shop-products-grid.slide-in {
+    animation:
+        productsSlideIn
+        0.45s
+        ease-in-out
+        forwards;
+}
+
+
+/* =========================
+   SLIDE OUT
+========================= */
+
+@keyframes productsSlideOut {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+
+}
+
+
+/* =========================
+   SLIDE IN
+========================= */
+
+@keyframes productsSlideIn {
+
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+
+}

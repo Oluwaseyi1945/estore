@@ -1,0 +1,273 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}
+eStore - Home
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+<link rel="stylesheet" href="{% static 'css/stats.css' %}">
+<link rel="stylesheet" href="{% static 'css/cart.css' %}">
+<link rel="stylesheet" href="{% static 'css/clear.css' %}">
+
+{% endblock %}
+
+{% block content %}
+<section class="page-header">
+
+    <div class="page-header-container">
+
+        <!-- Page Title -->
+        <h1>Cart</h1>
+
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+
+            <a href="{% url 'home' %}">Home</a>
+
+            <span>/</span>
+
+            <span class="current-page">Cart</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="cart-section">
+
+<div class="cart-container">
+
+    <!-- ========================= -->
+    <!-- LEFT: CART ITEMS -->
+    <!-- ========================= -->
+
+    <div class="cart-left">
+
+        <div class="cart-box">
+
+            <h2>Your Cart</h2>
+
+            <div class="cart-header">
+
+                <span>Product</span>
+                <span>Price</span>
+                <span>Quantity</span>
+                <span>Total</span>
+
+            </div>
+
+
+            <!-- Products will be inserted here by JavaScript -->
+
+            <div id="cartItems">
+
+                <p id="emptyCart">
+                    Your cart is empty.
+                </p>
+
+            </div>
+
+
+            <!-- CART ACTIONS -->
+
+            <div class="cart-actions">
+
+                <div class="coupon-section">
+
+                    <input
+                        type="text"
+                        id="couponCode"
+                        placeholder="Coupon code"
+                    >
+
+                    <button id="applyCoupon">
+                        Apply Coupon
+                    </button>
+
+                </div>
+
+
+                <div class="cart-buttons">
+
+                    <button id="updateCart">
+                        Update Cart
+                    </button>
+
+                    <button id="clearCart">
+                        Clear Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- RIGHT: ORDER SUMMARY -->
+    <!-- ========================= -->
+
+    <div class="cart-right">
+
+        <div class="order-summary">
+
+            <h2>Order Summary</h2>
+
+
+            <div class="summary-row">
+
+                <span>Subtotal</span>
+
+                <strong id="subtotal">
+                    ₦0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-row">
+
+                <span>Shipping</span>
+
+                <strong id="shipping">
+                    ₦0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-row">
+
+                <span>Tax</span>
+
+                <strong id="tax">
+                    ₦0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-row">
+
+                <span>Discount</span>
+
+                <strong id="discount">
+                    ₦0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-total">
+
+                <span>Total</span>
+
+                <strong id="cartTotal">
+                    ₦0
+                </strong>
+
+            </div>
+
+
+            <!-- CHECKOUT -->
+          <button  class="checkout-btn">
+             <a href="{% url 'checkout' %}">
+          Proceed to Checkout</a>
+          </button>
+          
+
+            <button class="continue-shopping">
+                <a
+                href="{% url 'home' %}"
+                
+            >
+                Continue Shopping
+            </a>
+            </button>
+            
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- PAYMENT METHODS -->
+        <!-- ========================= -->
+
+        <div class="payment-methods">
+
+            <h3>We Accept</h3>
+
+            <p>
+                Card, Bank Transfer and Mobile Payment
+            </p>
+
+            <div class="payment-icons">
+
+                <span>VISA</span>
+
+                <span>Mastercard</span>
+
+                <span>Verve</span>
+
+                <span>Transfer</span>
+
+            </div>
+
+            <small>
+                🔒 Secure checkout
+            </small>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- CLEAR CART CONFIRMATION MODAL -->
+<div id="clearCartModal" class="clear-cart-modal">
+
+    <div class="clear-cart-content">
+
+        <div class="clear-cart-icon">
+            🛒
+        </div>
+
+        <h3>Clear Cart?</h3>
+
+        <p>
+            Are you sure you want to remove all items from your cart?
+            This action cannot be undone.
+        </p>
+
+        <div class="clear-cart-actions">
+
+            <button id="cancelClearCart" class="cancel-clear">
+                Cancel
+            </button>
+
+            <button id="confirmClearCart" class="confirm-clear">
+                Yes, Clear Cart
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+<script src="{% static 'js/cart.js' %}"></script>
+</section>
+
+
+
+{% endblock %}

@@ -1,0 +1,661 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #f8fafc;
+    min-height: 100vh;
+}
+
+
+/* =========================
+   REGISTER PAGE
+========================= */
+
+.register-page {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px 20px;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(37, 99, 235, 0.08),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(99, 102, 241, 0.08),
+            transparent 30%
+        ),
+        #f8fafc;
+}
+
+
+/* =========================
+   BACKGROUND SHAPES
+========================= */
+
+.shape {
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    filter: blur(2px);
+
+    animation: float 7s ease-in-out infinite;
+}
+
+.shape-one {
+    width: 150px;
+    height: 150px;
+
+    background: rgba(37, 99, 235, 0.08);
+
+    top: 8%;
+    left: 5%;
+}
+
+.shape-two {
+    width: 100px;
+    height: 100px;
+
+    background: rgba(99, 102, 241, 0.08);
+
+    bottom: 10%;
+    right: 8%;
+
+    animation-delay: 1.5s;
+}
+
+.shape-three {
+    width: 60px;
+    height: 60px;
+
+    background: rgba(14, 165, 233, 0.08);
+
+    top: 15%;
+    right: 18%;
+
+    animation-delay: 3s;
+}
+
+
+/* =========================
+   MAIN WRAPPER
+========================= */
+
+.register-wrapper {
+    width: 100%;
+    max-width: 820px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    background: #ffffff;
+
+    border-radius: 22px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 20px 55px rgba(15, 23, 42, 0.10);
+
+    position: relative;
+    z-index: 2;
+
+    animation: cardAppear 0.8s ease forwards;
+}
+
+
+/* =========================
+   BRAND SECTION
+========================= */
+
+.brand-section {
+    padding: 45px 40px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0f172a,
+            #1e293b
+        );
+
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* Decorative circle */
+
+.brand-section::after {
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 50%;
+
+    right: -100px;
+    bottom: -90px;
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.brand-logo,
+.mobile-logo {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    font-size: 21px;
+
+    font-weight: 800;
+
+    letter-spacing: -0.7px;
+}
+
+.logo-icon {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #2563eb;
+
+    color: white;
+
+    border-radius: 8px;
+
+    font-size: 18px;
+
+    font-weight: 800;
+
+    box-shadow:
+        0 6px 15px rgba(37, 99, 235, 0.30);
+}
+
+
+/* =========================
+   BRAND TEXT
+========================= */
+
+.brand-section h2 {
+    font-size: 27px;
+
+    line-height: 1.2;
+
+    margin-top: 30px;
+
+    letter-spacing: -0.8px;
+}
+
+.brand-section > p {
+    margin-top: 14px;
+
+    max-width: 350px;
+
+    color: #cbd5e1;
+
+    line-height: 1.6;
+
+    font-size: 11px;
+}
+
+
+/* =========================
+   FEATURES
+========================= */
+
+.brand-features {
+    margin-top: 23px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 11px;
+}
+
+.feature {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+}
+
+.feature span {
+    width: 22px;
+    height: 22px;
+
+    border-radius: 50%;
+
+    background: rgba(37, 99, 235, 0.2);
+
+    color: #60a5fa;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 10px;
+}
+
+.feature p {
+    color: #e2e8f0;
+
+    font-size: 10px;
+}
+
+
+/* =========================
+   REGISTER CARD
+========================= */
+
+.register-card {
+    padding: 40px 38px;
+
+    background: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+/* =========================
+   CARD HEADER
+========================= */
+
+.card-header {
+    margin-bottom: 20px;
+}
+
+.card-header h1 {
+    font-size: 24px;
+
+    color: #0f172a;
+
+    margin-bottom: 5px;
+
+    letter-spacing: -0.5px;
+}
+
+.card-header p {
+    color: #64748b;
+
+    font-size: 11px;
+}
+
+
+/* =========================
+   MOBILE LOGO
+========================= */
+
+.mobile-logo {
+    display: none;
+
+    color: #0f172a;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   DJANGO FORM
+========================= */
+
+.register-form p {
+    margin-bottom: 12px;
+}
+
+.register-form label {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #334155;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+.register-form input {
+    width: 100%;
+
+    height: 43px;
+
+    padding: 0 12px;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 9px;
+
+    background: #f8fafc;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 11px;
+
+    color: #0f172a;
+
+    outline: none;
+
+    transition: all 0.25s ease;
+}
+
+.register-form input:focus {
+    border-color: #2563eb;
+
+    background: white;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.08);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   DJANGO ERRORS
+========================= */
+
+.register-form .errorlist {
+    list-style: none;
+
+    color: #dc2626;
+
+    font-size: 9px;
+
+    margin-bottom: 5px;
+}
+
+.register-form .helptext {
+    display: block;
+
+    margin-top: 4px;
+
+    color: #94a3b8;
+
+    font-size: 8px;
+
+    line-height: 1.4;
+}
+
+
+/* =========================
+   REGISTER BUTTON
+========================= */
+
+.register-btn {
+    width: 100%;
+
+    height: 44px;
+
+    margin-top: 4px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    transition: all 0.3s ease;
+
+    box-shadow:
+        0 8px 20px rgba(37, 99, 235, 0.20);
+}
+
+.register-btn .arrow {
+    font-size: 16px;
+
+    transition: transform 0.3s ease;
+}
+
+.register-btn:hover {
+    background: #1d4ed8;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 25px rgba(37, 99, 235, 0.25);
+}
+
+.register-btn:hover .arrow {
+    transform: translateX(4px);
+}
+
+.register-btn:active {
+    transform: translateY(0);
+}
+
+
+/* =========================
+   LOGIN
+========================= */
+
+.login-link {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 4px;
+
+    margin-top: 16px;
+
+    font-size: 10px;
+
+    color: #64748b;
+}
+
+.login-link a {
+    color: #2563eb;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: color 0.2s ease;
+}
+
+.login-link a:hover {
+    color: #1d4ed8;
+
+    text-decoration: underline;
+}
+
+
+/* =========================
+   SECURITY TEXT
+========================= */
+
+.secure-text {
+    text-align: center;
+
+    margin-top: 15px;
+
+    color: #94a3b8;
+
+    font-size: 8px;
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes cardAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 850px) {
+
+    .register-wrapper {
+        grid-template-columns: 1fr;
+
+        max-width: 480px;
+    }
+
+    .brand-section {
+        display: none;
+    }
+
+    .register-card {
+        padding: 35px 30px;
+    }
+
+    .mobile-logo {
+        display: flex;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .register-page {
+        padding: 15px;
+    }
+
+    .register-wrapper {
+        border-radius: 18px;
+    }
+
+    .register-card {
+        padding: 30px 22px;
+    }
+
+    .card-header h1 {
+        font-size: 21px;
+    }
+
+    .card-header p {
+        font-size: 10px;
+    }
+
+    .register-form input {
+        height: 42px;
+
+        font-size: 11px;
+    }
+
+    .register-btn {
+        height: 42px;
+
+        font-size: 11px;
+    }
+
+}
+
+
+.error-message {
+    margin-top: 5px;
+
+    color: #dc2626;
+
+    font-size: 9px;
+
+    line-height: 1.5;
+}
+
+.error-message ul {
+    margin: 0;
+    padding-left: 15px;
+}
+
+.error-message li {
+    margin-bottom: 2px;
+}

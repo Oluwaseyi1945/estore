@@ -1,0 +1,89 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - eStore</title>
+
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+
+<body>
+
+    <div class="auth-container">
+     <div class="floating-products">
+
+    <div class="product-item product-one">
+        🛍️
+        <span>Shop</span>
+    </div>
+
+    <div class="product-item product-two">
+        👟
+        <span>Fashion</span>
+    </div>
+
+    <div class="product-item product-three">
+        👜
+        <span>Style</span>
+    </div>
+
+    <div class="product-item product-four">
+        📦
+        <span>Delivery</span>
+    </div>
+
+    <div class="product-item product-five">
+        🛒
+        <span>Cart</span>
+    </div>
+
+</div>
+        <div class="auth-card">
+
+            <div class="auth-logo">
+                <h2>eStore</h2>
+            </div>
+
+            <h1>Welcome Back</h1>
+
+            <p class="subtitle">
+                Login to your account to continue.
+            </p>
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                {% if request.GET.next %}
+                    <input
+                        type="hidden"
+                        name="next"
+                        value="{{ request.GET.next }}"
+                    >
+                {% endif %}
+
+                <button type="submit">
+                    Login
+                </button>
+
+            </form>
+
+            <p class="register-text">
+                Don't have an account?
+                <a href="{% url 'register' %}">
+                    Create Account
+                </a>
+            </p>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

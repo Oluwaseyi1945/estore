@@ -1,0 +1,439 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+eStore - Home
+{% endblock %}
+
+{% block content %}
+
+<!-- =====================================================
+     HERO SECTION
+===================================================== -->
+
+<section class="hero-section">
+
+<div class="hero-container">
+
+    <!-- LEFT CONTENT -->
+    <div class="hero-content">
+
+        <!-- Small Label -->
+        <div class="hero-label block">
+            New Collection 2026
+        </div>
+
+
+        <!-- Main Heading -->
+        <h1>
+            Discover Stylish
+            <span>Fashion</span> For Every
+            Season
+        </h1>
+
+
+        <!-- Description -->
+        <p>
+            Explore the latest styles designed to keep you looking and feeling your best all year round. From everyday essentials to standout pieces, discover fashionable clothing and accessories for every season, occasion, and personal style. Shop quality products at great prices and refresh your wardrobe with something you'll love.
+        </p>
+
+
+        <!-- Buttons -->
+        <div class="hero-buttons">
+
+            <a href="{% url 'category' %}" class="btn-primary">
+                Shop Now
+                <span>→</span>
+            </a>
+
+            <a href="#" class="btn-secondary">
+                View Collection
+            </a>
+
+        </div>
+
+
+        <!-- FEATURES -->
+        <div class="hero-features">
+
+            <!-- Free Shipping -->
+            <div class="hero-feature">
+
+                <svg viewBox="0 0 24 24">
+                    <path d="M3 6h11v10H3z"></path>
+                    <path d="M14 9h4l3 3v4h-7z"></path>
+                    <circle cx="7" cy="18" r="2"></circle>
+                    <circle cx="18" cy="18" r="2"></circle>
+                </svg>
+
+                <span>Free Shipping</span>
+
+            </div>
+
+
+            <!-- Secure Payment -->
+            <div class="hero-feature">
+
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2l8 4v6c0 5-3.4 8.5-8 10-4.6-1.5-8-5-8-10V6z"></path>
+                    <path d="M9 12l2 2 4-4"></path>
+                </svg>
+
+                <span>Secure Payment</span>
+
+            </div>
+
+
+            <!-- Easy Returns -->
+            <div class="hero-feature">
+
+                <svg viewBox="0 0 24 24">
+                    <path d="M3 12a9 9 0 0 1 15-6"></path>
+                    <path d="M18 3v4h-4"></path>
+                    <path d="M21 12a9 9 0 0 1-15 6"></path>
+                    <path d="M6 21v-4h4"></path>
+                </svg>
+
+                <span>Easy Returns</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- RIGHT IMAGE AREA -->
+    <div class="hero-image-area">
+
+        <!-- Discount Badge -->
+        <div class="discount-badge">
+            <strong>30%</strong>
+            <span>OFF</span>
+        </div>
+
+
+        <!-- Main Product Image -->
+        <div class="hero-image">
+
+            <img
+                src="{% static 'images/b.png' %}"
+                alt="Fashion Collection"
+            >
+
+        </div>
+
+
+        <!-- PRODUCT CARD 1 -->
+        <div class="floating-product product-one">
+
+            <div class="product-image">
+
+                <img
+                    src="{% static 'images/ai.jpg' %}"
+                    alt="Summer Collection"
+                >
+
+            </div>
+
+            <div class="product-info">
+
+                <span>Summer Collection</span>
+                <strong>$89.99</strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT CARD 2 -->
+        <div class="floating-product product-two block">
+
+            <div class="product-image">
+
+                <img
+                    src="{% static 'images/c.png' %}"
+                    alt="Casual Wear"
+                >
+
+            </div>
+
+            <div class="product-info">
+
+                <span>Casual Wear</span>
+                <strong>$59.99</strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</section>
+
+<!-- =====================================================
+     FEATURES / BENEFITS SECTION
+===================================================== -->
+
+<section class="benefits-section">
+
+
+<div class="benefits-container">
+
+
+    <!-- FREE SHIPPING -->
+    <div class="benefit-item block">
+
+        <div class="benefit-icon">
+
+            <svg viewBox="0 0 24 24">
+                <path d="M3 6h11v10H3z"></path>
+                <path d="M14 9h4l3 3v4h-7z"></path>
+                <circle cx="7" cy="18" r="2"></circle>
+                <circle cx="18" cy="18" r="2"></circle>
+            </svg>
+
+        </div>
+
+        <h3>Free Shipping</h3>
+
+        <p>
+           Enjoy convenient delivery on eligible orders with our free shipping offer. Shop your favorite products without worrying about additional delivery costs.
+        </p>
+
+    </div>
+
+
+    <!-- MONEY BACK GUARANTEE -->
+    <div class="benefit-item block">
+
+        <div class="benefit-icon">
+
+            <svg viewBox="0 0 24 24">
+                <path d="M4 10c0-3 3-5 7-5s7 2 7 5-3 5-7 5-7-2-7-5z"></path>
+                <path d="M18 8c2 0 3 1 3 3"></path>
+                <path d="M7 15l-2 4"></path>
+                <path d="M17 15l2 4"></path>
+                <circle cx="9" cy="9" r=".7"></circle>
+                <circle cx="15" cy="9" r=".7"></circle>
+            </svg>
+
+        </div>
+
+        <h3>Money Back Guarantee</h3>
+
+        <p>
+     Shop with confidence. If your purchase doesn't meet our expectations or qualifies under our return policy, we're committed to helping you find a suitable solution.
+        </p>
+
+    </div>
+
+
+    <!-- DISCOUNT OFFERS -->
+    <div class="benefit-item block">
+
+        <div class="benefit-icon">
+
+            <svg viewBox="0 0 24 24">
+                <path d="M6 5l12 14"></path>
+                <circle cx="7" cy="6" r="2"></circle>
+                <circle cx="17" cy="18" r="2"></circle>
+            </svg>
+
+        </div>
+
+        <h3>Discount Offers</h3>
+
+        <p>
+         Save more when you shop with us. Discover special promotions, seasonal deals, and exclusive discounts designed to give you great value on your favorite products.
+        </p>
+
+    </div>
+
+
+    <!-- SUPPORT -->
+    <div class="benefit-item block">
+
+        <div class="benefit-icon">
+
+            <svg viewBox="0 0 24 24">
+                <path d="M4 13v-2a8 8 0 0 1 16 0v2"></path>
+                <path d="M4 13h3v6H4z"></path>
+                <path d="M17 13h3v6h-3z"></path>
+                <path d="M17 19c0 1.1-.9 2-2 2h-2"></path>
+            </svg>
+
+        </div>
+
+        <h3>24/7 Support</h3>
+
+        <p>
+          We're here whenever you need us. Get assistance with your orders, products, payments, and other shopping questions through our customer support channels.
+        </p>
+
+    </div>
+
+</div>
+
+
+</section>
+
+<!-- =====================================================
+     PRODUCT CATEGORIES
+===================================================== -->
+
+<div class="categories-container">
+
+<button
+    class="category-arrow category-prev"
+    type="button"
+>
+    &#10094;
+</button>
+
+
+<div
+    class="categories-list"
+    id="categories-list"
+>
+</div>
+
+
+<button
+    class="category-arrow category-next"
+    type="button"
+>
+    &#10095;
+</button>
+
+
+</div>
+
+<!-- =====================================================
+     BEST SELLERS SECTION
+===================================================== -->
+
+<section class="best-sellers-section">
+
+
+<div class="best-sellers-container">
+
+
+    <!-- SECTION HEADER -->
+    <div class="section-heading">
+
+        <h2>Best Sellers</h2>
+
+        <p>
+            Discover the products our customers love the most. Explore our best-selling items, carefully selected based on popularity, quality, and customer demand. Find your next favorite product and enjoy great value with every purchase.
+        </p>
+
+    </div>
+
+
+    <!-- PRODUCTS -->
+    <div
+        class="products-grid"
+        id="best-sellers-container"
+    >
+    </div>
+
+
+</div>
+
+
+</section>
+
+<!-- =====================================================
+     PRODUCTS SECTION
+===================================================== -->
+
+<section class="products-section">
+
+
+<div class="products-container">
+
+
+    <!-- CATEGORY FILTERS -->
+    <div class="product-filters">
+
+        <button
+            class="filter-btn active block"
+            data-filter="all "
+        >
+            All
+        </button>
+
+
+        <button
+            class="filter-btn block"
+            data-filter="clothing "
+        >
+            Clothing
+        </button>
+
+
+        <button
+            class="filter-btn block"
+            data-filter="accessories"
+        >
+            Accessories
+        </button>
+
+
+        <button
+            class="filter-btn block"
+            data-filter="electronics"
+        >
+            Electronics
+        </button>
+
+    </div>
+
+
+    <!-- PRODUCTS GRID -->
+    <div
+        class="shop-products-grid block"
+        id="products-container"
+    >
+    </div>
+
+
+    <!-- VIEW ALL -->
+    <div class="view-all-products">
+
+        <a
+            href="#"
+            class="view-products-btn"
+        >
+            View All Products
+            <span>→</span>
+        </a>
+
+    </div>
+
+</div>
+
+
+</section>
+
+{% endblock %}
+
+<!-- =====================================================
+     PAGE JAVASCRIPT
+===================================================== -->
+
+{% block extra_js %}
+
+<script src="{% static 'js/cat.js' %}"></script>
+
+<script src="{% static 'js/products.js' %}"></script>
+
+<script src="{% static 'js/best-seller.js' %}"></script>
+
+<script src="{% static 'js/categories.js' %}"></script>
+
+{% endblock %}

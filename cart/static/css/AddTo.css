@@ -1,0 +1,179 @@
+.product-card {
+    position: relative;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+
+/* IMAGE AREA */
+
+.product-image {
+    position: relative;
+    height: 360px;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+
+/* PRODUCT IMAGE */
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+
+/* DARK/BLUE HOVER EFFECT */
+
+.product-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(13, 95, 196, 0.78);
+
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    pointer-events: none;
+}
+
+.product-card:hover .product-image::after {
+    opacity: 1;
+}
+
+
+/* NEW SEASON */
+
+.product-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+
+    z-index: 3;
+
+    background: #0758c9;
+    color: #fff;
+
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/* TOP RIGHT ICONS */
+
+.product-actions {
+    position: absolute;
+
+    top: 16px;
+    right: 16px;
+
+    display: flex;
+    gap: 8px;
+
+    z-index: 3;
+}
+
+
+.action-btn {
+    width: 38px;
+    height: 38px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #fff;
+    color: #174f91;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 19px;
+
+    cursor: pointer;
+
+    box-shadow: 0 3px 10px rgba(0,0,0,.12);
+
+    transition: transform .2s ease;
+}
+
+.action-btn:hover {
+    transform: scale(1.08);
+}
+
+
+/* ADD TO CART */
+
+.add-to-cart-overlay {
+    position: absolute;
+
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+
+    z-index: 4;
+
+    opacity: 0;
+    transform: translateY(15px);
+
+    transition:
+        opacity .3s ease,
+        transform .3s ease;
+}
+
+
+.product-card:hover .add-to-cart-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.add-to-cart-btn {
+    width: 100%;
+    height: 48px;
+
+    border: none;
+    border-radius: 7px;
+
+    background: #0758c9;
+    color: #fff;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.add-to-cart-btn:hover {
+    background: #064da9;
+}
+
+
+/* PRODUCT INFO */
+
+.product-info {
+    padding: 15px;
+}
+
+.product-info h4 {
+    margin: 0 0 8px;
+}
+
+.price {
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.rating {
+    color: #ff9800;
+    font-size: 13px;
+}
