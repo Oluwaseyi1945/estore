@@ -2,27 +2,33 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
+
 from .models import Testimonial
-from django.shortcuts import render, redirect, get_object_or_404
 from .models import Cart, CartItem, Product
 from .serializers import CartSerializer
+
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
+
 from .forms import ContactForm, ContactMessage
 from .forms import RegisterForm
+
 from django.http import JsonResponse, Http404
 from django.db import connection
-import requests
 from django.contrib import messages
 
+import requests
 
 
 class CartDetailView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        cart, _ = Cart.objects.get_or_create(user=request.user)
+        cart, _ = Cart.objects.get_or_create(
+            user=request.user
+        )
 
         serializer = CartSerializer(cart)
 
@@ -33,18 +39,26 @@ class AddToCartView(APIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
-        quantity = int(request.data.get("quantity", 1))
+        quantity = int(
+            request.data.get("quantity", 1)
+        )
+
         product_id = request.data.get("product_id")
 
         try:
-            product = Product.objects.get(id=product_id)
+            product = Product.objects.get(
+                id=product_id
+            )
+
         except Product.DoesNotExist:
             return Response(
                 {"error": "Product not found"},
                 status=status.HTTP_404_NOT_FOUND
             )
 
-        cart, _ = Cart.objects.get_or_create(user=request.user)
+        cart, _ = Cart.objects.get_or_create(
+            user=request.user
+        )
 
         cartItem, created = CartItem.objects.get_or_create(
             cart=cart,
@@ -60,7 +74,10 @@ class AddToCartView(APIView):
 
         serializer = CartSerializer(cart)
 
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(
+            serializer.data,
+            status=status.HTTP_201_CREATED
+        )
 
 
 class RemoveFromCartView(APIView):
@@ -74,6 +91,7 @@ class RemoveFromCartView(APIView):
                 id=item_id,
                 cart__user=request.user
             )
+
         except CartItem.DoesNotExist:
             return Response(
                 {"error": "Cart item not found"},
@@ -82,7 +100,10 @@ class RemoveFromCartView(APIView):
 
         cart_item.delete()
 
-        cart = Cart.objects.get(user=request.user)
+        cart = Cart.objects.get(
+            user=request.user
+        )
+
         serializer = CartSerializer(cart)
 
         return Response(
@@ -92,11 +113,17 @@ class RemoveFromCartView(APIView):
 
 
 def home(request):
-    return render(request, 'home.html')
+    return render(
+        request,
+        'home.html'
+    )
 
 
 def cart(request):
-    return render(request, 'cart.html')
+    return render(
+        request,
+        'cart.html'
+    )
 
 
 def about(request):
@@ -130,13 +157,17 @@ def testimonials(request):
 
 
 def category(request):
-    return render(request, 'category.html')
+    return render(
+        request,
+        'category.html'
+    )
 
 
 def productDetails(request):
 
     product_id = request.GET.get("id")
 
+    # No product ID
     if not product_id:
         return redirect("category")
 
@@ -146,6 +177,7 @@ def productDetails(request):
             timeout=10
         )
 
+        # Product doesn't exist
         if response.status_code != 200:
             raise Http404("Product not found")
 
@@ -164,7 +196,10 @@ def productDetails(request):
 
 
 def cartb(request):
-    return render(request, 'cartb.html')
+    return render(
+        request,
+        'cartb.html'
+    )
 
 
 @login_required(login_url="/login/")
@@ -184,7 +219,10 @@ def checkout(request):
     subtotal = 0
 
     for item in cart_items:
-        subtotal += item.product.price * item.quantity
+        subtotal += (
+            item.product.price *
+            item.quantity
+        )
 
     shipping = 0
     tax = 0
@@ -213,13 +251,18 @@ def register(request):
 
     if request.method == "POST":
 
-        form = RegisterForm(request.POST)
+        form = RegisterForm(
+            request.POST
+        )
 
         if form.is_valid():
 
             user = form.save()
 
-            login(request, user)
+            login(
+                request,
+                user
+            )
 
             return redirect("home")
 
@@ -240,7 +283,10 @@ def login_view(request):
     if request.user.is_authenticated:
         return redirect("home")
 
-    next_url = request.GET.get("next") or request.POST.get("next")
+    next_url = (
+        request.GET.get("next")
+        or request.POST.get("next")
+    )
 
     if request.method == "POST":
 
@@ -253,7 +299,10 @@ def login_view(request):
 
             user = form.get_user()
 
-            login(request, user)
+            login(
+                request,
+                user
+            )
 
             if next_url:
                 return redirect(next_url)
@@ -281,17 +330,35 @@ def logout_view(request):
 
 
 def contact(request):
-    return render(request, 'contact.html')
+    return render(
+        request,
+        'contact.html'
+    )
 
 
 def contact_view(request):
 
     if request.method == "POST":
 
-        name = request.POST.get("name", "").strip()
-        email = request.POST.get("email", "").strip()
-        subject = request.POST.get("subject", "").strip()
-        message = request.POST.get("message", "").strip()
+        name = request.POST.get(
+            "name",
+            ""
+        ).strip()
+
+        email = request.POST.get(
+            "email",
+            ""
+        ).strip()
+
+        subject = request.POST.get(
+            "subject",
+            ""
+        ).strip()
+
+        message = request.POST.get(
+            "message",
+            ""
+        ).strip()
 
         if name and email and subject and message:
 
@@ -316,15 +383,21 @@ def contact_view(request):
                 "Please fill in all fields."
             )
 
-    return render(request, "contact.html")
+    return render(
+        request,
+        "contact.html"
+    )
 
 
 def db_check(request):
 
     try:
+
         return JsonResponse({
             "database": connection.vendor,
-            "name": str(connection.settings_dict["NAME"]),
+            "name": str(
+                connection.settings_dict["NAME"]
+            ),
         })
 
     except Exception as e:
