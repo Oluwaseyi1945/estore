@@ -13,6 +13,7 @@ from .forms import ContactForm, ContactMessage
 from .forms import RegisterForm
 from django.http import JsonResponse
 from django.db import connection
+import requests
 
 
 
@@ -135,15 +136,25 @@ from .models import Product
 
 
 def productDetails(request):
+
     product_id = request.GET.get("id")
 
     if not product_id:
-        return redirect("category")
+        raise Http404("Product ID is required")
 
-    product = get_object_or_404(
-        Product,
-        id=product_id
-    )
+    try:
+        response = requests.get(
+            f"https://dummyjson.com/products/{product_id}",
+            timeout=10
+        )
+
+        if response.status_code != 200:
+            raise Http404("Product not found")
+
+        product = response.json()
+
+    except requests.RequestException:
+        raise Http404("Unable to load product")
 
     return render(
         request,
@@ -152,7 +163,6 @@ def productDetails(request):
             "product": product
         }
     )
-    
 def cartb(request):
     return render(request, 'cartb.html')
 
