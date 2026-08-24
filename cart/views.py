@@ -11,10 +11,10 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import ContactForm, ContactMessage
 from .forms import RegisterForm
-from django.http import JsonResponse
+from django.http import JsonResponse, Http404
 from django.db import connection
 import requests
-
+from django.contrib import messages
 
 
 
@@ -69,7 +69,6 @@ class RemoveFromCartView(APIView):
     def delete(self, request):
         item_id = request.data.get("item_id")
 
-    
         try:
             cart_item = CartItem.objects.get(
                 id=item_id,
@@ -91,6 +90,7 @@ class RemoveFromCartView(APIView):
             status=status.HTTP_200_OK
         )
 
+
 def home(request):
     return render(request, 'home.html')
 
@@ -102,8 +102,8 @@ def cart(request):
 def about(request):
 
     testimonials = Testimonial.objects.filter(
-    is_active=True
-     ).order_by("created_at")
+        is_active=True
+    ).order_by("created_at")
 
     return render(
         request,
@@ -112,6 +112,7 @@ def about(request):
             "testimonials": testimonials
         }
     )
+
 
 def testimonials(request):
 
@@ -136,7 +137,6 @@ def productDetails(request):
 
     product_id = request.GET.get("id")
 
-    # No product ID
     if not product_id:
         return redirect("category")
 
@@ -146,7 +146,6 @@ def productDetails(request):
             timeout=10
         )
 
-        # Product doesn't exist
         if response.status_code != 200:
             raise Http404("Product not found")
 
@@ -163,8 +162,10 @@ def productDetails(request):
         }
     )
 
+
 def cartb(request):
     return render(request, 'cartb.html')
+
 
 @login_required(login_url="/login/")
 def checkout(request):
@@ -233,6 +234,7 @@ def register(request):
         }
     )
 
+
 def login_view(request):
 
     if request.user.is_authenticated:
@@ -259,7 +261,6 @@ def login_view(request):
             return redirect("home")
 
     else:
-
         form = AuthenticationForm()
 
     return render(
@@ -270,6 +271,7 @@ def login_view(request):
             "next": next_url,
         }
     )
+
 
 def logout_view(request):
 
@@ -283,13 +285,16 @@ def contact(request):
 
 
 def contact_view(request):
+
     if request.method == "POST":
+
         name = request.POST.get("name", "").strip()
         email = request.POST.get("email", "").strip()
         subject = request.POST.get("subject", "").strip()
         message = request.POST.get("message", "").strip()
 
         if name and email and subject and message:
+
             ContactMessage.objects.create(
                 name=name,
                 email=email,
@@ -297,7 +302,7 @@ def contact_view(request):
                 message=message,
             )
 
-            django_messages.success(
+            messages.success(
                 request,
                 "Your message has been sent."
             )
@@ -305,7 +310,8 @@ def contact_view(request):
             return redirect("contact")
 
         else:
-            django_messages.error(
+
+            messages.error(
                 request,
                 "Please fill in all fields."
             )
@@ -313,9 +319,8 @@ def contact_view(request):
     return render(request, "contact.html")
 
 
-
-
 def db_check(request):
+
     try:
         return JsonResponse({
             "database": connection.vendor,
@@ -323,6 +328,7 @@ def db_check(request):
         })
 
     except Exception as e:
+
         return JsonResponse({
             "error": str(e)
         }, status=500)
