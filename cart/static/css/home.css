@@ -10,12 +10,14 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
     font-family: "Poppins", sans-serif;
     background: #ffffff;
     color: #172033;
+    overflow-x: hidden;
 }
 
 
@@ -33,7 +35,6 @@ body {
     padding: 0 7%;
 
     background: #ffffff;
-
     border-bottom: 1px solid #edf1f5;
 
     gap: 45px;
@@ -49,6 +50,8 @@ body {
 
 .logo {
     position: relative;
+
+    flex-shrink: 0;
 
     font-size: 29px;
     font-weight: 700;
@@ -90,139 +93,6 @@ body {
     width: 42px;
 }
 
-
-/* =========================================================
-   SEARCH
-========================================================= */
-
-.search-container {
-    flex: 1;
-
-    max-width: 620px;
-    height: 46px;
-
-    position: relative;
-
-    display: flex;
-    align-items: center;
-
-    background: #f7f9fc;
-
-    border: 1px solid #e1e7ef;
-
-    border-radius: 8px;
-
-    transition: 0.3s ease;
-}
-
-.search-container:hover {
-    border-color: #cbd5e1;
-}
-
-.search-container:focus-within {
-    background: #ffffff;
-
-    border-color: #174a75;
-
-    box-shadow: 0 0 0 4px rgba(23, 74, 117, 0.08);
-}
-
-
-/* INPUT */
-
-.search-container input {
-    width: 100%;
-    height: 100%;
-
-    padding: 0 58px 0 18px;
-
-    border: none;
-    outline: none;
-
-    background: transparent;
-
-    font-family: "Poppins", sans-serif;
-    font-size: 13px;
-
-    color: #172033;
-}
-
-.search-container input::placeholder {
-    color: #9aa4b2;
-}
-
-
-/* SEARCH BUTTON */
-
-.search-btn {
-    position: absolute;
-
-    top: 4px;
-    right: 4px;
-
-    width: 38px;
-    height: 38px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border: none;
-    border-radius: 6px;
-
-    background: #174a75;
-
-    cursor: pointer;
-
-    transition: 0.25s ease;
-}
-
-.search-btn:hover {
-    background: #e63946;
-}
-
-.search-btn svg {
-    width: 17px;
-    height: 17px;
-
-    fill: none;
-
-    stroke: #ffffff;
-
-    stroke-width: 2;
-
-    stroke-linecap: round;
-}
-
-
-/* =========================================================
-   SEARCH RESULTS
-========================================================= */
-
-.search-results {
-    position: absolute;
-
-    top: calc(100% + 8px);
-    left: 0;
-
-    width: 100%;
-
-    max-height: 420px;
-
-    overflow-y: auto;
-
-    background: #ffffff;
-
-    border: 1px solid #e6ebf1;
-
-    border-radius: 10px;
-
-    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.13);
-
-    z-index: 5000;
-}
-
-
 /* =========================================================
    HEADER ICONS
 ========================================================= */
@@ -235,6 +105,8 @@ body {
     gap: 8px;
 
     margin-left: auto;
+
+    flex-shrink: 0;
 }
 
 
@@ -244,6 +116,8 @@ body {
 
 .account-dropdown {
     position: relative;
+
+    flex-shrink: 0;
 }
 
 .account-btn {
@@ -268,7 +142,6 @@ body {
 
 .account-btn:hover {
     background: #f3f6fa;
-
     color: #e63946;
 }
 
@@ -287,7 +160,9 @@ body {
 }
 
 
-/* ACCOUNT MENU */
+/* =========================================================
+   ACCOUNT MENU
+========================================================= */
 
 .account-menu {
     position: absolute;
@@ -296,6 +171,7 @@ body {
     right: 0;
 
     width: 220px;
+    max-width: calc(100vw - 20px);
 
     padding: 8px;
 
@@ -315,7 +191,8 @@ body {
     transition: 0.25s ease;
 }
 
-.account-dropdown:hover .account-menu {
+.account-dropdown:hover .account-menu,
+.account-dropdown:focus-within .account-menu {
     opacity: 1;
     visibility: visible;
 
@@ -340,7 +217,6 @@ body {
 
 .account-menu a:hover {
     background: #f3f6fa;
-
     color: #174a75;
 }
 
@@ -371,6 +247,8 @@ body {
     align-items: center;
     justify-content: center;
 
+    flex-shrink: 0;
+
     border-radius: 8px;
 
     color: #174a75;
@@ -382,7 +260,6 @@ body {
 
 .icon-link:hover {
     background: #f3f6fa;
-
     color: #e63946;
 }
 
@@ -404,6 +281,10 @@ body {
 /* =========================================================
    CART / WISHLIST BADGE
 ========================================================= */
+
+.notification {
+    position: relative;
+}
 
 .notification .badge {
     position: absolute;
@@ -452,7 +333,6 @@ body {
 
 .nav-container {
     width: 86%;
-
     max-width: 1400px;
 
     min-height: 54px;
@@ -471,6 +351,8 @@ body {
 .nav-link {
     position: relative;
 
+    flex: 0 0 auto;
+
     padding: 17px 17px;
 
     color: #ffffff;
@@ -480,6 +362,8 @@ body {
     font-size: 13px;
 
     font-weight: 500;
+
+    white-space: nowrap;
 
     transition: 0.25s ease;
 }
@@ -513,464 +397,87 @@ body {
 .nav-link.active::after {
     transform: scaleX(1);
 }
-/* =========================================================
-   RESPONSIVE HEADER
-========================================================= */
 
-/* =========================================================
-   TABLET / SMALL LAPTOP
-========================================================= */
-
-@media (max-width: 1100px) {
-
-    .top-header {
-        padding: 0 4%;
-
-        gap: 25px;
-    }
-
-    .logo {
-        font-size: 27px;
-    }
-
-    .search-container {
-        max-width: 520px;
-    }
-
-    .nav-container {
-        width: 95%;
-
-        gap: 0;
-    }
-
-    .nav-link {
-        padding-left: 11px;
-        padding-right: 11px;
-
-        font-size: 12px;
-    }
-
-}
-
-
-/* =========================================================
-   TABLET
-========================================================= */
+/* =========================================
+   MOBILE HEADER
+========================================= */
 
 @media (max-width: 800px) {
 
-    /* HEADER */
+    /* =========================
+       TOP HEADER
+    ========================= */
 
     .top-header {
         width: 100%;
-
         min-height: auto;
 
-        padding: 15px 20px;
+        padding: 14px 16px;
 
         display: grid;
 
-        grid-template-columns: 1fr auto;
-
+        grid-template-columns: minmax(0, 1fr) auto;
         grid-template-rows: auto auto;
 
-        gap: 12px;
+        gap: 10px;
 
         align-items: center;
+
+        box-sizing: border-box;
     }
 
 
-    /* LOGO */
+    /* =========================
+       LOGO
+    ========================= */
 
     .logo {
-        font-size: 24px;
+        min-width: 0;
 
+        font-size: 24px;
         letter-spacing: -0.8px;
+
+        white-space: nowrap;
     }
 
     .logo::after {
         bottom: -4px;
 
         width: 20px;
-
         height: 2px;
     }
 
 
-    /* HEADER ICONS */
+    /* =========================
+       HEADER ICONS
+    ========================= */
 
     .header-icons {
         display: flex;
 
         align-items: center;
-
         justify-content: flex-end;
 
-        gap: 3px;
+        gap: 2px;
 
-        margin-left: 0;
+        margin: 0;
+
+        width: auto;
+        min-width: 0;
     }
 
     .icon-link,
     .account-btn {
         width: 38px;
         height: 38px;
+
+        flex-shrink: 0;
     }
 
     .icon-link svg,
     .account-btn svg {
         width: 20px;
         height: 20px;
-    }
-
-
-    /* SEARCH */
-
-    .search-container {
-        grid-column: 1 / -1;
-
-        grid-row: 2;
-
-        width: 100%;
-
-        max-width: none;
-
-        height: 44px;
-    }
-
-    .search-container input {
-        font-size: 12px;
-
-        padding-left: 15px;
-
-        padding-right: 52px;
-    }
-
-    .search-btn {
-        width: 36px;
-        height: 36px;
-
-        top: 3px;
-        right: 3px;
-    }
-
-    .search-btn svg {
-        width: 16px;
-        height: 16px;
-    }
-
-
-    /* SEARCH RESULTS */
-
-    .search-results {
-        top: calc(100% + 6px);
-
-        max-height: 60vh;
-
-        border-radius: 8px;
-    }
-
-
-    /* ACCOUNT MENU */
-
-    .account-menu {
-        width: 210px;
-
-        max-width: calc(100vw - 30px);
-    }
-
-
-    /* =====================================================
-       NAVBAR
-    ===================================================== */
-
-    .navbar {
-        overflow: hidden;
-    }
-
-    .nav-container {
-        width: 100%;
-
-        min-height: 48px;
-
-        padding: 0 12px;
-
-        margin: 0;
-
-        justify-content: flex-start;
-
-        gap: 2px;
-
-        flex-wrap: nowrap;
-
-        overflow-x: auto;
-
-        overflow-y: hidden;
-
-        scrollbar-width: none;
-
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .nav-container::-webkit-scrollbar {
-        display: none;
-    }
-
-
-    /* NAV LINKS */
-
-    .nav-link {
-        flex: 0 0 auto;
-
-        padding: 14px 11px;
-
-        font-size: 11px;
-
-        white-space: nowrap;
-    }
-
-    .nav-link::after {
-        left: 11px;
-
-        right: 11px;
-
-        bottom: 6px;
-    }
-
-}
-
-
-/* =========================================================
-   MOBILE PHONE
-========================================================= */
-
-@media (max-width: 500px) {
-
-    /* HEADER */
-
-    .top-header {
-        padding: 12px 14px;
-
-        gap: 10px;
-    }
-
-
-    /* LOGO */
-
-    .logo {
-        font-size: 21px;
-
-        letter-spacing: -0.7px;
-    }
-
-
-    /* HEADER ICONS */
-
-    .header-icons {
-        gap: 0;
-    }
-
-    .icon-link,
-    .account-btn {
-        width: 35px;
-        height: 35px;
-
-        border-radius: 7px;
-    }
-
-    .icon-link svg,
-    .account-btn svg {
-        width: 18px;
-        height: 18px;
-    }
-
-
-    /* BADGE */
-
-    .notification .badge {
-        top: 0;
-
-        right: -1px;
-
-        min-width: 16px;
-
-        height: 16px;
-
-        padding: 0 4px;
-
-        font-size: 8px;
-
-        border-width: 1.5px;
-    }
-
-
-    /* SEARCH */
-
-    .search-container {
-        height: 42px;
-
-        border-radius: 7px;
-    }
-
-    .search-container input {
-        font-size: 11px;
-
-        padding-left: 12px;
-
-        padding-right: 48px;
-    }
-
-    .search-btn {
-        width: 34px;
-        height: 34px;
-
-        top: 3px;
-        right: 3px;
-
-        border-radius: 5px;
-    }
-
-    .search-btn svg {
-        width: 15px;
-        height: 15px;
-    }
-
-
-    /* SEARCH RESULTS */
-
-    .search-results {
-        width: 100%;
-
-        max-height: 55vh;
-
-        border-radius: 7px;
-    }
-
-
-    /* ACCOUNT MENU */
-
-    .account-menu {
-        width: 190px;
-
-        right: -4px;
-
-        padding: 6px;
-    }
-
-    .account-menu a {
-        padding: 10px 11px;
-
-        font-size: 12px;
-    }
-
-    .account-user {
-        padding: 10px 11px;
-
-        font-size: 12px;
-    }
-
-
-    /* =====================================================
-       NAVBAR
-    ===================================================== */
-
-    .nav-container {
-        min-height: 45px;
-
-        padding: 0 8px;
-
-        gap: 0;
-    }
-
-    .nav-link {
-        padding: 13px 9px;
-
-        font-size: 10.5px;
-    }
-
-    .nav-link::after {
-        left: 9px;
-
-        right: 9px;
-
-        bottom: 5px;
-
-        height: 2px;
-    }
-
-}
-
-
-/* =========================================================
-   VERY SMALL PHONES
-========================================================= */
-
-@media (max-width: 360px) {
-
-    .top-header {
-        padding: 10px;
-    }
-
-
-    .logo {
-        font-size: 19px;
-    }
-
-
-    .icon-link,
-    .account-btn {
-        width: 32px;
-        height: 32px;
-    }
-
-    .icon-link svg,
-    .account-btn svg {
-        width: 17px;
-        height: 17px;
-    }
-
-
-    .search-container {
-        height: 40px;
-    }
-
-    .search-container input {
-        font-size: 10px;
-
-        padding-left: 10px;
-
-        padding-right: 45px;
-    }
-
-    .search-btn {
-        width: 32px;
-        height: 32px;
-
-        top: 3px;
-        right: 3px;
-    }
-
-
-    /* NAV */
-
-    .nav-container {
-        padding: 0 6px;
-
-        min-height: 43px;
-    }
-
-    .nav-link {
-        padding: 12px 8px;
-
-        font-size: 10px;
-    }
-
-    .nav-link::after {
-        left: 8px;
-
-        right: 8px;
-
-        bottom: 4px;
     }
 
 }
