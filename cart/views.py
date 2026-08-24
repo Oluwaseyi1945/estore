@@ -131,16 +131,14 @@ def testimonials(request):
 def category(request):
     return render(request, 'category.html')
 
-from django.shortcuts import render
-from .models import Product
-
 
 def productDetails(request):
 
     product_id = request.GET.get("id")
 
+    # No product ID
     if not product_id:
-        raise Http404("Product ID is required")
+        return redirect("category")
 
     try:
         response = requests.get(
@@ -148,6 +146,7 @@ def productDetails(request):
             timeout=10
         )
 
+        # Product doesn't exist
         if response.status_code != 200:
             raise Http404("Product not found")
 
@@ -163,6 +162,7 @@ def productDetails(request):
             "product": product
         }
     )
+
 def cartb(request):
     return render(request, 'cartb.html')
 
