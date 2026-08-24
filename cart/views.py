@@ -137,13 +137,13 @@ from .models import Product
 def productDetails(request):
     product_id = request.GET.get("id")
 
-    product = None
+    if not product_id:
+        return redirect("category")
 
-    if product_id:
-        product = get_object_or_404(
-            Product,
-            id=product_id
-        )
+    product = get_object_or_404(
+        Product,
+        id=product_id
+    )
 
     return render(
         request,
@@ -152,7 +152,7 @@ def productDetails(request):
             "product": product
         }
     )
-
+    
 def cartb(request):
     return render(request, 'cartb.html')
 
