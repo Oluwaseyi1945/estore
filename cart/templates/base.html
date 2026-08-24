@@ -225,45 +225,56 @@
 
     <div class="nav-container">
 
+        <!-- NAVIGATION LINKS -->
+        <div class="nav-links">
 
-        <a href="{% url 'home' %}" class="nav-link active">
-            Home
-        </a>
+            <a href="{% url 'home' %}" class="nav-link active">
+                Home
+            </a>
+
+            <a href="{% url 'about' %}" class="nav-link">
+                About
+            </a>
+
+            <a href="{% url 'category' %}" class="nav-link">
+                Category
+            </a>
+
+            <a href="{% url 'product_details' %}" class="nav-link">
+                Product Details
+            </a>
+
+            <a href="{% url 'cartb' %}" class="nav-link">
+                Cart
+            </a>
+
+            <a href="{% url 'checkout' %}" class="nav-link">
+                Checkout
+            </a>
+
+            <a href="{% url 'contact' %}" class="nav-link">
+                Contact
+            </a>
+
+        </div>
 
 
-        <a  href="{% url 'about' %}" class="nav-link">
-            About
-        </a>
-
-
-        <a href="{% url 'category' %}"  class="nav-link">
-            Category
-        </a>
-
-
-        <a href="{% url 'product_details' %}" class="nav-link">
-            Product Details
-        </a>
-
-
-        <a href="{% url 'cartb' %}" class="nav-link">
-            Cart
-        </a>
-
-
-        <a href="{% url 'checkout' %}"  class="nav-link">
-            Checkout
-        </a>
-
-        <a href="{% url 'contact' %}" class="nav-link">
-            Contact
-        </a>
-
+        <!-- MOBILE MENU BUTTON -->
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
     </div>
 
 </nav>
-
 
 
 <!-- ================= PAGE CONTENT ================= -->
@@ -493,7 +504,7 @@
 <!-- ================= JAVASCRIPT ================= -->
 
 
-
+<script src="{% static 'js/menu-toggle.js' %}"></script>
 <script src="{% static 'js/search.js' %}"></script>
 <script src="{% static 'js/cart.js' %}"></script>
 {% block extra_js %}
