@@ -3,18 +3,14 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 
-from .models import Testimonial
-from .models import Cart, CartItem, Product
+from .models import Testimonial, Cart, CartItem, Product
 from .serializers import CartSerializer
+from .forms import ContactMessage, RegisterForm
 
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
-
-from .forms import ContactForm, ContactMessage
-from .forms import RegisterForm
-
 from django.http import JsonResponse, Http404
 from django.db import connection
 from django.contrib import messages
@@ -39,9 +35,15 @@ class AddToCartView(APIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
-        quantity = int(
-            request.data.get("quantity", 1)
-        )
+        try:
+            quantity = int(
+                request.data.get("quantity", 1)
+            )
+        except (TypeError, ValueError):
+            return Response(
+                {"error": "Invalid quantity"},
+                status=status.HTTP_400_BAD_REQUEST
+            )
 
         product_id = request.data.get("product_id")
 
@@ -49,7 +51,6 @@ class AddToCartView(APIView):
             product = Product.objects.get(
                 id=product_id
             )
-
         except Product.DoesNotExist:
             return Response(
                 {"error": "Product not found"},
@@ -60,17 +61,17 @@ class AddToCartView(APIView):
             user=request.user
         )
 
-        cartItem, created = CartItem.objects.get_or_create(
+        cart_item, created = CartItem.objects.get_or_create(
             cart=cart,
             product=product
         )
 
         if created:
-            cartItem.quantity = quantity
+            cart_item.quantity = quantity
         else:
-            cartItem.quantity += quantity
+            cart_item.quantity += quantity
 
-        cartItem.save()
+        cart_item.save()
 
         serializer = CartSerializer(cart)
 
@@ -91,7 +92,6 @@ class RemoveFromCartView(APIView):
                 id=item_id,
                 cart__user=request.user
             )
-
         except CartItem.DoesNotExist:
             return Response(
                 {"error": "Cart item not found"},
@@ -115,19 +115,18 @@ class RemoveFromCartView(APIView):
 def home(request):
     return render(
         request,
-        'home.html'
+        "home.html"
     )
 
 
 def cart(request):
     return render(
         request,
-        'cart.html'
+        "cart.html"
     )
 
 
 def about(request):
-
     testimonials = Testimonial.objects.filter(
         is_active=True
     ).order_by("created_at")
@@ -142,7 +141,6 @@ def about(request):
 
 
 def testimonials(request):
-
     testimonials = Testimonial.objects.filter(
         is_active=True
     )
@@ -159,15 +157,13 @@ def testimonials(request):
 def category(request):
     return render(
         request,
-        'category.html'
+        "category.html"
     )
 
 
 def productDetails(request):
-
     product_id = request.GET.get("id")
 
-    # No product ID
     if not product_id:
         return redirect("category")
 
@@ -177,7 +173,6 @@ def productDetails(request):
             timeout=10
         )
 
-        # Product doesn't exist
         if response.status_code != 200:
             raise Http404("Product not found")
 
@@ -198,13 +193,12 @@ def productDetails(request):
 def cartb(request):
     return render(
         request,
-        'cartb.html'
+        "cartb.html"
     )
 
 
 @login_required(login_url="/login/")
 def checkout(request):
-
     cart = Cart.objects.filter(
         user=request.user
     ).first()
@@ -245,18 +239,15 @@ def checkout(request):
 
 
 def register(request):
-
     if request.user.is_authenticated:
         return redirect("home")
 
     if request.method == "POST":
-
         form = RegisterForm(
             request.POST
         )
 
         if form.is_valid():
-
             user = form.save()
 
             login(
@@ -279,7 +270,6 @@ def register(request):
 
 
 def login_view(request):
-
     if request.user.is_authenticated:
         return redirect("home")
 
@@ -289,14 +279,12 @@ def login_view(request):
     )
 
     if request.method == "POST":
-
         form = AuthenticationForm(
             request,
             data=request.POST
         )
 
         if form.is_valid():
-
             user = form.get_user()
 
             login(
@@ -323,7 +311,6 @@ def login_view(request):
 
 
 def logout_view(request):
-
     logout(request)
 
     return redirect("home")
@@ -332,14 +319,12 @@ def logout_view(request):
 def contact(request):
     return render(
         request,
-        'contact.html'
+        "contact.html"
     )
 
 
 def contact_view(request):
-
     if request.method == "POST":
-
         name = request.POST.get(
             "name",
             ""
@@ -361,7 +346,6 @@ def contact_view(request):
         ).strip()
 
         if name and email and subject and message:
-
             ContactMessage.objects.create(
                 name=name,
                 email=email,
@@ -377,7 +361,6 @@ def contact_view(request):
             return redirect("contact")
 
         else:
-
             messages.error(
                 request,
                 "Please fill in all fields."
@@ -390,9 +373,7 @@ def contact_view(request):
 
 
 def db_check(request):
-
     try:
-
         return JsonResponse({
             "database": connection.vendor,
             "name": str(
@@ -401,7 +382,9 @@ def db_check(request):
         })
 
     except Exception as e:
-
-        return JsonResponse({
-            "error": str(e)
-        }, status=500)
+        return JsonResponse(
+            {
+                "error": str(e)
+            },
+            status=500
+        )
