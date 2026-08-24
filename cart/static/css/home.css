@@ -50,18 +50,15 @@ body {
 
 .logo {
     position: relative;
-
     flex-shrink: 0;
 
     font-size: 29px;
     font-weight: 700;
-
     letter-spacing: -1px;
 
     color: #174a75;
 
     white-space: nowrap;
-
     cursor: pointer;
 
     transition: 0.3s ease;
@@ -71,7 +68,6 @@ body {
     content: "";
 
     position: absolute;
-
     left: 0;
     bottom: -6px;
 
@@ -79,7 +75,6 @@ body {
     height: 3px;
 
     background: #e63946;
-
     border-radius: 10px;
 
     transition: 0.3s ease;
@@ -93,17 +88,16 @@ body {
     width: 42px;
 }
 
+
 /* =========================================================
    HEADER ICONS
 ========================================================= */
 
 .header-icons {
     display: flex;
-
     align-items: center;
 
     gap: 8px;
-
     margin-left: auto;
 
     flex-shrink: 0;
@@ -116,7 +110,6 @@ body {
 
 .account-dropdown {
     position: relative;
-
     flex-shrink: 0;
 }
 
@@ -132,7 +125,6 @@ body {
     border-radius: 8px;
 
     background: transparent;
-
     color: #174a75;
 
     cursor: pointer;
@@ -150,9 +142,7 @@ body {
     height: 22px;
 
     fill: none;
-
     stroke: currentColor;
-
     stroke-width: 1.8;
 
     stroke-linecap: round;
@@ -178,7 +168,6 @@ body {
     background: #ffffff;
 
     border: 1px solid #e7ebf0;
-
     border-radius: 10px;
 
     box-shadow: 0 15px 40px rgba(15, 23, 42, 0.12);
@@ -195,7 +184,6 @@ body {
 .account-dropdown:focus-within .account-menu {
     opacity: 1;
     visibility: visible;
-
     transform: translateY(0);
 }
 
@@ -205,7 +193,6 @@ body {
     padding: 11px 13px;
 
     color: #374151;
-
     text-decoration: none;
 
     font-size: 13px;
@@ -222,7 +209,6 @@ body {
 
 .account-user {
     padding: 12px 13px;
-
     margin-bottom: 4px;
 
     color: #174a75;
@@ -252,7 +238,6 @@ body {
     border-radius: 8px;
 
     color: #174a75;
-
     text-decoration: none;
 
     transition: 0.25s ease;
@@ -268,9 +253,7 @@ body {
     height: 21px;
 
     fill: none;
-
     stroke: currentColor;
-
     stroke-width: 1.8;
 
     stroke-linecap: round;
@@ -298,16 +281,13 @@ body {
     padding: 0 5px;
 
     display: none;
-
     align-items: center;
     justify-content: center;
 
     background: #e63946;
-
     color: #ffffff;
 
     border: 2px solid #ffffff;
-
     border-radius: 50px;
 
     font-size: 9px;
@@ -327,7 +307,6 @@ body {
     background: #174a75;
 
     position: relative;
-
     z-index: 900;
 }
 
@@ -340,9 +319,7 @@ body {
     margin: auto;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     gap: 5px;
@@ -356,11 +333,9 @@ body {
     padding: 17px 17px;
 
     color: #ffffff;
-
     text-decoration: none;
 
     font-size: 13px;
-
     font-weight: 500;
 
     white-space: nowrap;
@@ -375,7 +350,6 @@ body {
 
     left: 17px;
     right: 17px;
-
     bottom: 8px;
 
     height: 2px;
@@ -383,7 +357,6 @@ body {
     background: #ffffff;
 
     transform: scaleX(0);
-
     transform-origin: center;
 
     transition: 0.25s ease;
@@ -398,15 +371,40 @@ body {
     transform: scaleX(1);
 }
 
-/* =========================================
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .top-header {
+        padding: 0 4%;
+        gap: 20px;
+    }
+
+    .nav-container {
+        width: 96%;
+        gap: 0;
+    }
+
+    .nav-link {
+        padding: 17px 11px;
+        font-size: 12px;
+    }
+
+    .nav-link::after {
+        left: 11px;
+        right: 11px;
+    }
+}
+
+
+/* =========================================================
    MOBILE HEADER
-========================================= */
+========================================================= */
 
 @media (max-width: 800px) {
-
-    /* =========================
-       TOP HEADER
-    ========================= */
 
     .top-header {
         width: 100%;
@@ -417,13 +415,11 @@ body {
         display: grid;
 
         grid-template-columns: minmax(0, 1fr) auto;
-        grid-template-rows: auto auto;
+        grid-template-rows: auto;
 
         gap: 10px;
 
         align-items: center;
-
-        box-sizing: border-box;
     }
 
 
@@ -470,8 +466,6 @@ body {
     .account-btn {
         width: 38px;
         height: 38px;
-
-        flex-shrink: 0;
     }
 
     .icon-link svg,
@@ -480,4 +474,150 @@ body {
         height: 20px;
     }
 
+
+    /* =========================
+       ACCOUNT MENU
+    ========================= */
+
+    .account-menu {
+        top: calc(100% + 8px);
+        right: 0;
+
+        width: 200px;
+    }
+
+
+    /* =========================
+       MOBILE NAVBAR
+    ========================= */
+
+    .navbar {
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        -webkit-overflow-scrolling: touch;
+
+        scrollbar-width: none;
+    }
+
+    .navbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-container {
+        width: max-content;
+        min-height: 48px;
+
+        margin: 0 auto;
+
+        padding: 0 8px;
+
+        justify-content: flex-start;
+
+        gap: 0;
+    }
+
+    .nav-link {
+        padding: 15px 12px;
+
+        font-size: 12px;
+
+        flex-shrink: 0;
+    }
+
+    .nav-link::after {
+        left: 12px;
+        right: 12px;
+        bottom: 6px;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .top-header {
+        padding: 12px 12px;
+    }
+
+    .logo {
+        font-size: 21px;
+        letter-spacing: -0.6px;
+    }
+
+    .header-icons {
+        gap: 0;
+    }
+
+    .icon-link,
+    .account-btn {
+        width: 35px;
+        height: 35px;
+    }
+
+    .icon-link svg,
+    .account-btn svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .account-menu {
+        width: 190px;
+        max-width: calc(100vw - 16px);
+    }
+
+    .nav-container {
+        padding: 0 4px;
+    }
+
+    .nav-link {
+        padding: 14px 10px;
+        font-size: 11px;
+    }
+
+    .nav-link::after {
+        left: 10px;
+        right: 10px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .top-header {
+        padding: 10px 8px;
+    }
+
+    .logo {
+        font-size: 19px;
+    }
+
+    .icon-link,
+    .account-btn {
+        width: 33px;
+        height: 33px;
+    }
+
+    .icon-link svg,
+    .account-btn svg {
+        width: 17px;
+        height: 17px;
+    }
+
+    .nav-link {
+        padding: 14px 8px;
+        font-size: 10px;
+    }
+
+    .nav-link::after {
+        left: 8px;
+        right: 8px;
+    }
 }
