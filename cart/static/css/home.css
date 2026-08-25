@@ -364,7 +364,7 @@ body {
     width: 100%;
     background: #174a75;
     position: relative;
-    z-index: 900;
+    z-index: 500;
 }
 
 .nav-container {
