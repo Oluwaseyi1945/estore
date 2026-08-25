@@ -262,7 +262,7 @@ def register(request):
 
     return render(
         request,
-        "register.html",
+        "Register.html",
         {
             "form": form
         }
